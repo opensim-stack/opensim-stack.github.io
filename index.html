@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenSim AI Stack — AI-Powered Virtual Worlds</title>
+  <meta name="description" content="A Docker stack for OpenSimulator that makes it easy to setup an AI enabled virtual world.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            dark: {
+              900: '#0a0a12',
+              800: '#12121f',
+              700: '#1a1a2e',
+              600: '#252542',
+            },
+            neon: {
+              primary: '#8b5cf6',
+              secondary: '#d946ef',
+              accent: '#06b6d4',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-screen bg-dark-900 text-gray-100">
+  <canvas id="code-rain"></canvas>
+  <div class="cyber-grid"></div>
+  <div class="shape shape-1"></div>
+  <div class="shape shape-2"></div>
+  <div class="shape shape-3"></div>
+
+  <nav class="navbar fixed top-0 left-0 right-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="opensim-stack.png" alt="OpenSim AI Stack" class="h-10 w-auto drop-shadow-lg group-hover:drop-shadow-[0_0_10px_rgba(139,92,246,0.8)] transition-all">
+        <span class="text-xl font-bold gradient-text">OpenSim AI Stack</span>
+      </a>
+
+      <div class="hidden md:flex items-center gap-1">
+        <a href="index.html" class="px-3 py-2 rounded-lg text-gray-100 hover:text-neon-primary transition-colors">Home</a>
+        <a href="get-it.html" class="px-3 py-2 rounded-lg text-gray-100 hover:text-neon-primary transition-colors">Get It</a>
+        <a href="play-it.html" class="px-3 py-2 rounded-lg text-gray-100 hover:text-neon-primary transition-colors">Play It</a>
+        <a href="share-it.html" class="px-3 py-2 rounded-lg text-gray-100 hover:text-neon-primary transition-colors">Share It</a>
+        <a href="https://github.com/opensim-stack/opensim-ai-docker" target="_blank" rel="noopener" class="ml-2 px-4 py-2 rounded-lg bg-neon-primary text-white font-medium hover:bg-violet-500 transition-colors btn-glow">GitHub</a>
+      </div>
+
+      <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-100 hover:bg-dark-700 transition-colors" aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu md:hidden border-t border-neon-primary/20 bg-dark-900/95 backdrop-blur">
+      <div class="container mx-auto px-4 py-4 flex flex-col gap-2">
+        <a href="index.html" class="px-4 py-2 rounded-lg text-gray-100 hover:bg-dark-700">Home</a>
+        <a href="get-it.html" class="px-4 py-2 rounded-lg text-gray-100 hover:bg-dark-700">Get It</a>
+        <a href="play-it.html" class="px-4 py-2 rounded-lg text-gray-100 hover:bg-dark-700">Play It</a>
+        <a href="share-it.html" class="px-4 py-2 rounded-lg text-gray-100 hover:bg-dark-700">Share It</a>
+        <a href="https://github.com/opensim-stack/opensim-ai-docker" target="_blank" rel="noopener" class="px-4 py-2 rounded-lg bg-neon-primary text-white text-center">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-20">
+    <!-- Hero -->
+    <section class="container mx-auto px-4 py-20 lg:py-32">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-8 animate-on-scroll">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-neon-primary/10 border border-neon-primary/30 text-neon-primary text-sm font-medium">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-primary opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-neon-primary"></span>
+            </span>
+            Experimental — Work in Progress
+          </div>
+          <h1 class="text-5xl lg:text-7xl font-extrabold leading-tight text-white">
+            Your virtual world,<br>
+            <span class="gradient-text neon-text">powered by AI</span>
+          </h1>
+          <p class="text-lg lg:text-xl text-gray-300 max-w-xl leading-relaxed">
+            A Docker stack for OpenSimulator that integrates MCP servers, a bot client, and Opencode so you can build, manage, and explore your grid using natural language.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="get-it.html" class="px-6 py-3 rounded-lg bg-neon-primary text-white font-semibold hover:bg-violet-500 transition-colors btn-glow shadow-[0_0_30px_rgba(139,92,246,0.4)]">
+              Get Started
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
+            <a href="https://github.com/opensim-stack/opensim-ai-docker" target="_blank" rel="noopener" class="px-6 py-3 rounded-lg border border-neon-primary/50 text-gray-100 hover:bg-neon-primary/10 hover:border-neon-primary transition-colors">
+              View on GitHub
+            </a>
+          </div>
+        </div>
+        <div class="relative animate-on-scroll" style="transition-delay: 200ms;">
+          <div class="absolute inset-0 bg-gradient-to-r from-neon-primary/30 to-neon-secondary/30 rounded-3xl blur-3xl"></div>
+          <div class="relative bg-dark-800/80 backdrop-blur border border-neon-primary/30 p-6 lg:p-8 rounded-2xl neon-border">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="w-3 h-3 rounded-full bg-red-500"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500"></div>
+              <span class="ml-2 text-xs text-gray-400 font-mono">opencode.json</span>
+            </div>
+            <pre class="text-sm lg:text-base"><code>"Create a cube prim next to me and make it red.""
+
+"Create new user 'Joe Smith' with password 'password123' 
+and give them the 'Estate Manager' role."
+      
+"Fly to me, then land and jump 3 times"      
+
+"Who is online right now?"
+      
+"Kick user 'The Troll' from the grid and ban their 
+IP address." 
+</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider container mx-auto px-4"></div>
+
+    <!-- Features -->
+    <section class="container mx-auto px-4 py-16">
+      <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+        <h2 class="text-4xl font-bold mb-4 text-white">Features</h2>
+        <p class="text-lg text-gray-400">Everything you need to run an AI-enabled OpenSimulator grid in one Docker stack.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-dark-800/80 backdrop-blur feature-card p-6 rounded-xl animate-on-scroll">
+          <div class="w-12 h-12 rounded-lg bg-neon-primary/20 flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-neon-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2 text-white">Natural Language Control</h3>
+          <p class="text-gray-400">Manage regions, users, and configuration through conversation. Anything the OpenSimulator console can do, your AI can do.</p>
+        </div>
+
+        <div class="bg-dark-800/80 backdrop-blur feature-card p-6 rounded-xl animate-on-scroll" style="transition-delay: 100ms;">
+          <div class="w-12 h-12 rounded-lg bg-neon-secondary/20 flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-neon-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2 text-white">In-World AI Bot</h3>
+          <p class="text-gray-400">A bot avatar logs in and accepts IM instructions. It can walk, run, fly, teleport, build prims, and manage inventory.</p>
+        </div>
+
+        <div class="bg-dark-800/80 backdrop-blur feature-card p-6 rounded-xl animate-on-scroll" style="transition-delay: 200ms;">
+          <div class="w-12 h-12 rounded-lg bg-neon-accent/20 flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-neon-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2 text-white">Build &amp; Create</h3>
+          <p class="text-gray-400">Create, position, scale, rotate, and texture prims. Configure environment settings and upload media — all through the bot.</p>
+        </div>
+
+        <div class="bg-dark-800/80 backdrop-blur feature-card p-6 rounded-xl animate-on-scroll" style="transition-delay: 300ms;">
+          <div class="w-12 h-12 rounded-lg bg-cyan-500/20 flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2 text-white">MCP Bridges</h3>
+          <p class="text-gray-400">Two MCP servers bridge OpenSimulator: one for the REST console, one for the in-world bot. Opencode connects them both.</p>
+        </div>
+
+        <div class="bg-dark-800/80 backdrop-blur feature-card p-6 rounded-xl animate-on-scroll" style="transition-delay: 400ms;">
+          <div class="w-12 h-12 rounded-lg bg-green-500/20 flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2 text-white">Docker Simplicity</h3>
+          <p class="text-gray-400">One compose file brings up OpenSimulator, MariaDB, the MCP sidecars, and Opencode. Source and release modes supported.</p>
+        </div>
+
+        <div class="bg-dark-800/80 backdrop-blur feature-card p-6 rounded-xl animate-on-scroll" style="transition-delay: 500ms;">
+          <div class="w-12 h-12 rounded-lg bg-orange-500/20 flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2 text-white">Flexible AI Providers</h3>
+          <p class="text-gray-400">Switch models and providers at runtime with star commands. Use GitHub Copilot, local models, or any provider Opencode supports.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider container mx-auto px-4"></div>
+
+    <!-- Stack -->
+    <section class="container mx-auto px-4 py-16">
+      <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
+        <h2 class="text-4xl font-bold mb-4 text-white">The Stack</h2>
+        <p class="text-lg text-gray-400">Open-source components wired together to create an AI-native virtual world.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="https://opensimulator.org/" target="_blank" rel="noopener" class="bg-dark-800/80 backdrop-blur stack-card p-6 rounded-xl border border-neon-primary/20 animate-on-scroll">
+          <div class="flex items-center gap-4 mb-3">
+            <div class="w-10 h-10 rounded-lg bg-neon-primary/20 flex items-center justify-center text-neon-primary font-bold">OS</div>
+            <h3 class="text-lg font-bold text-white">OpenSimulator</h3>
+          </div>
+          <p class="text-sm text-gray-400">The open-source virtual world server that powers your regions, avatars, and assets.</p>
+        </a>
+
+        <a href="https://opencode.ai/" target="_blank" rel="noopener" class="bg-dark-800/80 backdrop-blur stack-card p-6 rounded-xl border border-neon-secondary/20 animate-on-scroll" style="transition-delay: 100ms;">
+          <div class="flex items-center gap-4 mb-3">
+            <div class="w-10 h-10 rounded-lg bg-neon-secondary/20 flex items-center justify-center text-neon-secondary font-bold">OC</div>
+            <h3 class="text-lg font-bold text-white">Opencode</h3>
+          </div>
+          <p class="text-sm text-gray-400">AI agent runtime that connects to MCP servers and routes natural-language requests to tools.</p>
+        </a>
+
+        <a href="https://github.com/opensim-stack/libremetaverse" target="_blank" rel="noopener" class="bg-dark-800/80 backdrop-blur stack-card p-6 rounded-xl border border-neon-accent/20 animate-on-scroll" style="transition-delay: 200ms;">
+          <div class="flex items-center gap-4 mb-3">
+            <div class="w-10 h-10 rounded-lg bg-neon-accent/20 flex items-center justify-center text-neon-accent font-bold">LM</div>
+            <h3 class="text-lg font-bold text-white">LibreMetaverse</h3>
+          </div>
+          <p class="text-sm text-gray-400">The .NET library that lets the bot client log in, move, build, and interact with the grid.</p>
+        </a>
+
+        <a href="https://github.com/opensim-stack/opensim-console2mcp" target="_blank" rel="noopener" class="bg-dark-800/80 backdrop-blur stack-card p-6 rounded-xl border border-cyan-500/20 animate-on-scroll" style="transition-delay: 300ms;">
+          <div class="flex items-center gap-4 mb-3">
+            <div class="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-bold">C2</div>
+            <h3 class="text-lg font-bold text-white">opensim-console2mcp</h3>
+          </div>
+          <p class="text-sm text-gray-400">Bridges the OpenSimulator REST console to MCP so AI can run admin commands.</p>
+        </a>
+
+        <a href="https://github.com/opensim-stack/opensim-metaverse2mcp" target="_blank" rel="noopener" class="bg-dark-800/80 backdrop-blur stack-card p-6 rounded-xl border border-green-500/20 animate-on-scroll" style="transition-delay: 400ms;">
+          <div class="flex items-center gap-4 mb-3">
+            <div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center text-green-400 font-bold">M2</div>
+            <h3 class="text-lg font-bold text-white">opensim-metaverse2mcp</h3>
+          </div>
+          <p class="text-sm text-gray-400">Bot-side MCP server that exposes in-world tools for movement, building, and inventory.</p>
+        </a>
+
+        <div class="bg-dark-800/80 backdrop-blur stack-card p-6 rounded-xl border border-orange-500/20 animate-on-scroll" style="transition-delay: 500ms;">
+          <div class="flex items-center gap-4 mb-3">
+            <div class="w-10 h-10 rounded-lg bg-orange-500/20 flex items-center justify-center text-orange-400 font-bold">B</div>
+            <h3 class="text-lg font-bold text-white">Bot Client</h3>
+          </div>
+          <p class="text-sm text-gray-400">The in-world avatar that receives IMs, executes tool calls, and acts as your grid assistant.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="container mx-auto px-4 py-20">
+      <div class="bg-gradient-to-r from-neon-primary/20 via-neon-secondary/20 to-neon-accent/20 border border-neon-primary/30 p-8 lg:p-12 rounded-2xl text-center animate-on-scroll">
+        <h2 class="text-3xl lg:text-4xl font-bold mb-4 text-white">Ready to deploy your own grid?</h2>
+        <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">Get the stack running in minutes with Docker Compose, then log in and start talking to your AI bot.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="get-it.html" class="px-6 py-3 rounded-lg bg-neon-primary text-white font-semibold hover:bg-violet-500 transition-colors btn-glow">Get It</a>
+          <a href="play-it.html" class="px-6 py-3 rounded-lg border border-gray-500 text-gray-100 hover:bg-gray-800 transition-colors">Play It</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-neon-primary/20 bg-dark-800/50 backdrop-blur mt-12">
+    <div class="container mx-auto px-4 py-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <img src="opensim-stack.png" alt="OpenSim AI Stack" class="h-8 w-auto">
+          <span class="font-bold gradient-text">OpenSim AI Stack</span>
+        </div>
+        <div class="flex gap-6 text-sm text-gray-400">
+          <a href="https://github.com/opensim-stack/opensim-ai-docker" target="_blank" rel="noopener" class="hover:text-neon-primary transition-colors">GitHub</a>
+          <a href="https://hub.docker.com/repository/docker/bithatch/opensim-ai-standalone/general" target="_blank" rel="noopener" class="hover:text-neon-primary transition-colors">Docker Hub</a>
+          <a href="https://opensimulator.org/" target="_blank" rel="noopener" class="hover:text-neon-primary transition-colors">OpenSimulator</a>
+        </div>
+        <p class="text-sm text-gray-500">Experimental work in progress.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
