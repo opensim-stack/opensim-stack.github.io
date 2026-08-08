@@ -345,14 +345,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../beginner/movement/" class="md-nav__link">
+      <a href="../../beginner/movement-animation/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Movement
+    Movement and Animation
   
 
     
@@ -578,10 +578,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#core-movement-tool-set" class="md-nav__link">
+  <a href="#core-movement-and-avatar-control-tool-set" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Core movement tool set
+        Core movement and avatar control tool set
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#animation-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Animation control
       
     </span>
   </a>
@@ -960,10 +971,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#core-movement-tool-set" class="md-nav__link">
+  <a href="#core-movement-and-avatar-control-tool-set" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Core movement tool set
+        Core movement and avatar control tool set
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#animation-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Animation control
       
     </span>
   </a>
@@ -1036,7 +1058,7 @@
 
 <h1 id="advanced-movement-and-navigation">Advanced Movement and Navigation<a class="headerlink" href="#advanced-movement-and-navigation" title="Permanent link">&para;</a></h1>
 <p><code>opensim-metaverse2mcp</code> exposes movement tools over MCP HTTP. AI prompts in IM eventually map to these tools.</p>
-<h2 id="core-movement-tool-set">Core movement tool set<a class="headerlink" href="#core-movement-tool-set" title="Permanent link">&para;</a></h2>
+<h2 id="core-movement-and-avatar-control-tool-set">Core movement and avatar control tool set<a class="headerlink" href="#core-movement-and-avatar-control-tool-set" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>MoveBy</code></li>
 <li><code>WalkTo</code></li>
@@ -1044,12 +1066,28 @@
 <li><code>TeleportTo</code></li>
 <li><code>TeleportToRegionHandle</code></li>
 <li><code>StopMovement</code></li>
+<li><code>StartMovement</code></li>
+<li><code>LookAt</code></li>
+<li><code>SetCameraHeading</code></li>
+<li><code>GetCameraState</code></li>
+<li><code>Follow</code></li>
+<li><code>StopFollow</code></li>
 <li><code>Sit</code></li>
 <li><code>Stand</code></li>
 <li><code>Fly</code></li>
 <li><code>Jump</code></li>
-<li><code>Dance</code></li>
+<li><code>AnimationStart</code></li>
+<li><code>AnimationStop</code></li>
+<li><code>AnimationsList</code></li>
+<li><code>ActiveAnimations</code></li>
 </ul>
+<h2 id="animation-control">Animation control<a class="headerlink" href="#animation-control" title="Permanent link">&para;</a></h2>
+<p>Use <code>AnimationsList</code> to discover built-in animation names (e.g. <code>DANCE1</code>, <code>WAVE</code>, <code>CLAP</code>, <code>SIT</code>), then start/stop them by name or raw UUID:</p>
+<div class="highlight"><pre><span></span><code>AnimationsList()
+AnimationStart(animation=&quot;DANCE1&quot;)
+ActiveAnimations()
+AnimationStop(animation=&quot;DANCE1&quot;)
+</code></pre></div>
 <h2 id="reliable-navigation-pattern">Reliable navigation pattern<a class="headerlink" href="#reliable-navigation-pattern" title="Permanent link">&para;</a></h2>
 <p>For long distances, prefer waypoint-style prompts:</p>
 <div class="highlight"><pre><span></span><code>Walk to 140,130,25 first, then fly to 200,200,60, then land.

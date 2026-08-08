@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://opensim-stack.github.io/docs/beginner/movement/">
+        <link rel="canonical" href="https://opensim-stack.github.io/docs/beginner/movement-animation/">
       
       
         <link rel="prev" href="../quick-start/">
@@ -27,7 +27,7 @@
     
     
       
-        <title>Movement - OpenSim AI Stack Docs</title>
+        <title>Movement and Animation - OpenSim AI Stack Docs</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#beginner-movement" class="md-skip">
+        <a href="#beginner-movement-and-animation" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Movement
+              Movement and Animation
             
           </span>
         </div>
@@ -361,7 +361,7 @@
   <span class="md-ellipsis">
     
   
-    Movement
+    Movement and Animation
   
 
     
@@ -379,7 +379,7 @@
   <span class="md-ellipsis">
     
   
-    Movement
+    Movement and Animation
   
 
     
@@ -427,6 +427,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#animation-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Animation prompts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#follow-and-demonstrate-workflow" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -438,10 +449,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#troubleshooting-movement" class="md-nav__link">
+  <a href="#troubleshooting-movement-and-animation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Troubleshooting movement
+        Troubleshooting movement and animation
       
     </span>
   </a>
@@ -971,6 +982,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#animation-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Animation prompts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#follow-and-demonstrate-workflow" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -982,10 +1004,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#troubleshooting-movement" class="md-nav__link">
+  <a href="#troubleshooting-movement-and-animation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Troubleshooting movement
+        Troubleshooting movement and animation
       
     </span>
   </a>
@@ -1012,7 +1034,7 @@
   
 
 
-<h1 id="beginner-movement">Beginner Movement<a class="headerlink" href="#beginner-movement" title="Permanent link">&para;</a></h1>
+<h1 id="beginner-movement-and-animation">Beginner Movement and Animation<a class="headerlink" href="#beginner-movement-and-animation" title="Permanent link">&para;</a></h1>
 <p>These examples are natural-language prompts you can send to the bot in IM.</p>
 <h2 id="basic-movement-prompts">Basic movement prompts<a class="headerlink" href="#basic-movement-prompts" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>Walk to me.
@@ -1032,6 +1054,21 @@
 <p class="admonition-title">Use clear targets</p>
 <p>Give region name plus coordinates when possible. It reduces ambiguity and failed teleports.</p>
 </div>
+<h2 id="animation-prompts">Animation prompts<a class="headerlink" href="#animation-prompts" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>Wave at me.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Play the dance animation.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Start clapping.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Stop all animations.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>What animations are you playing?
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Use built-in animation names</p>
+<p>Names like <code>wave</code>, <code>dance</code>, <code>clap</code>, <code>bow</code>, <code>laugh</code>, and <code>sit</code> resolve to the viewer's built-in animations. You can also pass an animation UUID directly.</p>
+</div>
 <h2 id="follow-and-demonstrate-workflow">Follow-and-demonstrate workflow<a class="headerlink" href="#follow-and-demonstrate-workflow" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Ask the bot to come near you.</li>
@@ -1045,11 +1082,12 @@ Fly to 140,130,45.
 Stop movement.
 Walk back to 128,128,25.
 </code></pre></div>
-<h2 id="troubleshooting-movement">Troubleshooting movement<a class="headerlink" href="#troubleshooting-movement" title="Permanent link">&para;</a></h2>
+<h2 id="troubleshooting-movement-and-animation">Troubleshooting movement and animation<a class="headerlink" href="#troubleshooting-movement-and-animation" title="Permanent link">&para;</a></h2>
 <ul>
 <li>If the bot does not respond, confirm you are messaging the correct avatar.</li>
 <li>If commands lag, check container health and logs.</li>
 <li>If teleport fails, verify the destination region exists and is online.</li>
+<li>If an animation does not play, check that the name is a known built-in animation or provide a valid animation UUID.</li>
 </ul>
 <p>For tool-level details, see <strong>Advanced Guide -&gt; Movement and Navigation</strong>.</p>
 
