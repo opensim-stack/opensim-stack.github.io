@@ -113,39 +113,36 @@
             How to Add a New MCP Server
           </h2>
           <div class="space-y-6">
-            <p class="text-gray-300">Opencode reads its MCP server list from a JSON configuration file. To add a new server, edit the <code>mcpServers</code> section and restart the Opencode container.</p>
+            <p class="text-gray-300">The stack runs MCP over HTTP. Each MCP server is a separate container or process that exposes its tools at a URL, and Opencode connects to it as a remote server. To add a new MCP server, run it somewhere reachable on your network, then add its URL to the <code>mcp</code> section of <code>opencode.json</code> and restart Opencode.</p>
             <ol class="list-decimal list-inside space-y-3 text-gray-300">
-              <li>Find your Opencode config (usually mounted as <code>opencode.json</code> or inside the container at <code>/app/opencode.json</code>).</li>
-              <li>Add an entry under <code>mcpServers</code> with the command, arguments, and environment variables the server needs.</li>
-              <li>Restart the Opencode service so it picks up the new tools: <code>docker compose restart opencode</code>.</li>
+              <li>Deploy the MCP server you want to add (for example, as another Docker service on the same compose network).</li>
+              <li>Edit <code>/workspace/opencode.json</code> inside the Opencode container (or the mounted workspace volume).</li>
+              <li>Add a new entry under <code>mcp</code> with <code>"type": "remote"</code> and the server's HTTP URL.</li>
+              <li>Restart the Opencode service so it picks up the new tools: <code>docker compose restart opensim-opencode</code>.</li>
               <li>Ask the bot what new tools are available to confirm the connection.</li>
             </ol>
             <div class="relative">
               <pre id="code-mcp"><code>{
-  "mcpServers": {
-    "opensim-console": {
-      "command": "docker",
-      "args": ["exec", "-i", "opensim", "opensim-console2mcp"]
+  "mcp": {
+    "local_host_mcp": {
+      "type": "remote",
+      "url": "http://opensim-console2mcp:8997/mcp",
+      "enabled": true
     },
-    "opensim-metaverse": {
-      "command": "docker",
-      "args": ["exec", "-i", "opensim", "opensim-metaverse2mcp"]
+    "metaverse_mcp": {
+      "type": "remote",
+      "url": "http://opensim-metaverse2mcp:8999/mcp",
+      "enabled": true
     },
-    "database": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-postgres"],
-      "env": {
-        "POSTGRES_URL": "postgres://user:pass@db:5432/opensim"
-      }
+    "database_mcp": {
+      "type": "remote",
+      "url": "http://mcp-database:8080/mcp",
+      "enabled": true
     },
-    "email": {
-      "command": "uvx",
-      "args": ["mcp-server-smtp"],
-      "env": {
-        "SMTP_HOST": "smtp.example.com",
-        "SMTP_USER": "bot@example.com",
-        "SMTP_PASS": "secret"
-      }
+    "email_mcp": {
+      "type": "remote",
+      "url": "http://mcp-email:8080/mcp",
+      "enabled": true
     }
   }
 }</code></pre>
@@ -155,7 +152,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span>Server names and schemas vary by implementation. Check the README of the MCP server you are adding for the exact command, args, and environment variables.</span>
+              <span>Server names and URL paths vary by implementation. Check the README of the MCP server you are adding for the exact HTTP endpoint and any required authentication or environment variables.</span>
             </div>
           </div>
         </div>
