@@ -128,9 +128,39 @@
           </div>
         </div>
 
-        <div class="bg-dark-800/80 backdrop-blur border border-neon-accent/20 p-6 lg:p-8 rounded-xl animate-on-scroll">
+        <div class="bg-dark-800/80 backdrop-blur border border-neon-accent/20 p-6 lg:p-8 rounded-xl mb-8 animate-on-scroll">
           <h2 class="text-2xl font-bold mb-6 flex items-center gap-3 text-white">
             <span class="w-8 h-8 rounded-lg bg-neon-accent/20 flex items-center justify-center text-neon-accent text-sm">3</span>
+            Get Some Content
+          </h2>
+          <div class="space-y-6">
+            <p class="text-gray-300">Your grid starts empty, but there is a huge library of free and paid OpenSimulator content available online. You can import whole regions, avatars, clothing, textures, buildings, and more as OAR and IAR files.</p>
+            <ul class="grid md:grid-cols-2 gap-3 text-gray-300">
+              <li class="flex items-center gap-2"><span class="text-neon-accent">▸</span> <a href="https://www.outworldz.com/" target="_blank" rel="noopener" class="text-neon-accent hover:underline">OutWorldz</a> — Freeregions, textures, mesh objects</li>
+              <li class="flex items-center gap-2"><span class="text-neon-accent">▸</span> <a href="https://www.zadaroo.com/" target="_blank" rel="noopener" class="text-neon-accent hover:underline">Zadaroo</a> — free/paid avatars, clothing, and more</li>
+              <li class="flex items-center gap-2"><span class="text-neon-accent">▸</span> <a href="https://opensimworld.com/" target="_blank" rel="noopener" class="text-neon-accent hover:underline">OpenSim World</a> — region directory and free OARs</li>
+              <li class="flex items-center gap-2"><span class="text-neon-accent">▸</span> <a href="https://www.turbosquid.com/" target="_blank" rel="noopener" class="text-neon-accent hover:underline">TurboSquid</a> — paid 3D models and meshes</li>
+              <li class="flex items-center gap-2"><span class="text-neon-accent">▸</span> <a href="https://www.cgtrader.com/" target="_blank" rel="noopener" class="text-neon-accent hover:underline">CGTrader</a> — 3D assets for buildings and avatars</li>
+            </ul>
+            <div class="flex items-start gap-3 p-4 rounded-lg border border-cyan-500/30 bg-cyan-500/10 text-gray-100">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>Just give the bot the URL of what you want to download, or place it yourself in <code>/workspace</code>. The example below uses 
+<a href="https://www.outworldz.com/Sculpts/cgi/files/OAR-Sandbox(1X1).txt"  rel="noopener" class="text-neon-accent hover:underline">Bwild Parx : Sandbox-0 by ACME Prims</a></span>
+            </div>
+            
+               <div class="relative">
+                  <pre id="code-prim"><code>Import the OAR "https://opensim-stack.github.io/OAR-Sandbox(1X1).tgz"
+and load it into this region.</code></pre>
+                  <button class="copy-btn absolute top-2 right-2 px-3 py-1 rounded bg-dark-700 text-gray-300 text-xs hover:bg-dark-600 transition-colors" data-target="#code-prim">Copy</button>
+                </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800/80 backdrop-blur border border-neon-accent/20 p-6 lg:p-8 rounded-xl animate-on-scroll">
+          <h2 class="text-2xl font-bold mb-6 flex items-center gap-3 text-white">
+            <span class="w-8 h-8 rounded-lg bg-neon-accent/20 flex items-center justify-center text-neon-accent text-sm">4</span>
             Switch AI Provider
           </h2>
           <p class="text-gray-300 mb-4">For more complex tasks you can switch models at runtime. For example, to use GitHub Copilot with GPT-5.3 Codex, send these star commands to the bot:</p>
