@@ -94,7 +94,7 @@
             <span class="gradient-text neon-text">powered by Agentic AI</span>
           </h1>
           <p class="text-lg lg:text-xl text-gray-300 max-w-xl leading-relaxed">
-            A Docker stack for OpenSimulator that integrates MCP servers, a bot client, and Opencode so you can build, manage, and explore your grid using natural language.
+            A Docker stack for <a href="https://opensimulator.org/" target="_blank" rel="noopener" class="text-neon-primary hover:text-neon-secondary transition-colors underline decoration-neon-primary/50 hover:decoration-neon-secondary">OpenSimulator</a> that integrates MCP servers, a bot client, and <a href="https://opencode.ai/" target="_blank" rel="noopener" class="text-neon-primary hover:text-neon-secondary transition-colors underline decoration-neon-primary/50 hover:decoration-neon-secondary">Opencode</a> so you can build, manage, and explore your grid using natural language.
           </p>
           <div class="flex flex-wrap gap-4">
             <a href="get-it.html" class="px-6 py-3 rounded-lg bg-neon-primary text-white font-semibold hover:bg-violet-500 transition-colors btn-glow shadow-[0_0_30px_rgba(139,92,246,0.4)]">
@@ -115,31 +115,57 @@
               <div class="w-3 h-3 rounded-full bg-red-500"></div>
               <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
               <div class="w-3 h-3 rounded-full bg-green-500"></div>
-              <span class="ml-2 text-xs text-gray-400 font-mono">opencode.json</span>
+              <span class="ml-2 text-xs text-gray-400 font-mono">OpenSimulator Chat</span>
             </div>
-            <pre class="text-sm lg:text-base"><code>"Follow me"
+            <div class="prompt-carousel" data-carousel>
+              <div class="prompt-slide active">
+                <pre class="text-xs lg:text-sm"><code>Follow me
 
-"Bow before me, peasant!"
+Bow before me, peasant!
 
-"Create a cube prim next to me and make it red.""
-      
-"Fly to me, then land and jump 3 times"      
+Create a cube prim next to me and make it red.
 
-"Who is online right now?"
+Fly to me, then land and jump 3 times
 
-"Create new user 'Joe Smith' with password 'password123' 
-and give them the 'Estate Manager' role."
+Who is online right now?
 
-"Import OAR file from https://example.com/myregion.oar
+Restart the region
+
+Create new user 'Joe Smith' with password 'password123' 
+and give them the 'Estate Manager' role.</code></pre>
+              </div>
+              <div class="prompt-slide">
+                <pre class="text-xs lg:text-sm"><code>Import OAR file from https://example.com/myregion.oar
 and load it into this region
-      
-"Kick user 'The Troll' from the grid and ban their 
-IP address."
 
-"Make the sky some crazy colours!"
+Kick user 'The Troll' from the grid and ban them.
 
-"Write me a LSL script that makes a prim spin and change colors randomly."
-</code></pre>
+Make the sky some crazy colours!
+
+Go sit on the nearest chair and wave to everyone in the region.
+
+How many prims are in this region and how many are owned by me?
+
+Write an LSL script to make a prim spin &amp; change colors randomly.
+
+Create a group 'Bots Anonymous' and invite 'Kryten 2X4B-523P'.</code></pre>
+              </div>
+              <div class="prompt-slide">
+                <pre class="text-xs lg:text-sm"><code>Import IAR file from https://example.com/myinventory.iar 
+and load it into my inventory.
+
+Subdivide this parcel into 4 smaller parcels and set the 
+access to 'Group Only' for each.
+
+Follow me to the nearest teleport point and then teleport 
+to 'Main Plaza'.
+
+How many pairs of shoes are in my inventory? List their names.
+
+Are there any scripts running in this region that are owned 
+by other users? If so, list them.</code></pre>
+              </div>
+            </div>
           </div>
         </div>
       </div>

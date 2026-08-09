@@ -94,4 +94,18 @@ document.addEventListener('DOMContentLoaded', () => {
     el.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-700');
     observer.observe(el);
   });
+
+  // Prompt carousel in the hero terminal card
+  document.querySelectorAll('[data-carousel]').forEach(carousel => {
+    const slides = carousel.querySelectorAll('.prompt-slide');
+    if (slides.length < 2) return;
+
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 10000);
+  });
+
 });

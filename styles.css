@@ -233,3 +233,31 @@ code {
 .btn-glow:hover::before {
   left: 100%;
 }
+
+/* Prompt carousel inside the terminal card */
+.prompt-carousel {
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+}
+
+.prompt-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: none;
+}
+
+.prompt-slide.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.prompt-slide pre {
+  margin: 0;
+  height: 100%;
+}
