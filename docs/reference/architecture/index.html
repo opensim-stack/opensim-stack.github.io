@@ -401,6 +401,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../beginner/content/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Content (Mesh Upload)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../beginner/land/" class="md-nav__link">
         
   
@@ -610,6 +638,34 @@
     
   
     Building and Environment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/content/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Content (Mesh Upload)
   
 
     
@@ -1059,10 +1115,11 @@
 
 
 <h1 id="architecture-diagram">Architecture Diagram<a class="headerlink" href="#architecture-diagram" title="Permanent link">&para;</a></h1>
-<p>This diagram shows how the stack components fit together, including the database, hypergrid, dialog bridge, and external AI provider/model.</p>
+<p>This diagram shows how the stack components fit together, including the database, hypergrid, Blender content authoring, dialog bridge, and external AI provider/model.</p>
 <pre class="mermaid"><code>%%{init: {'flowchart': {'nodeSpacing': 55, 'rankSpacing': 110, 'diagramPadding': 16}}}%%
 flowchart TB
     User["Viewer user"] --&gt;|"IM commands"| BotAvatar["Bot avatar in OpenSimulator"]
+    BlenderApp["Blender desktop app"] --&gt;|"author and export GLB/GLTF"| OpenSim
 
     subgraph DockerHost["Docker Compose Stack"]
       direction TB
@@ -1078,6 +1135,7 @@ flowchart TB
         direction LR
         ConsoleMCP["opensim-console2mcp MCP HTTP"]
         MetaMCP["opensim-metaverse2mcp MCP HTTP and bot session"]
+        BlenderMCP["opensim-blender MCP HTTP (blender-mcp)"]
       end
 
       subgraph AISide["AI Side"]
@@ -1097,6 +1155,9 @@ flowchart TB
     OpenCodeInit --&gt; OpenCode
     OpenCode &lt;--&gt;|"MCP tools"| ConsoleMCP
     OpenCode &lt;--&gt;|"MCP tools"| MetaMCP
+    OpenCode &lt;--&gt;|"MCP tools"| BlenderMCP
+
+    BlenderMCP --&gt;|"drives Blender via blender-mcp"| BlenderApp
 
     Provider["AI provider and model (GitHub Copilot, OpenAI, local)"] &lt;--&gt;|"API auth and model calls"| OpenCode
 
@@ -1107,7 +1168,7 @@ flowchart TB
 <li>You send bot instructions via in-world IM.</li>
 <li><code>opensim-metaverse2mcp</code> routes the text to Opencode chat sessions.</li>
 <li>Opencode decides which MCP tools to call.</li>
-<li>Tool calls go to either <code>opensim-console2mcp</code> (server admin) or <code>opensim-metaverse2mcp</code> (in-world actions).</li>
+<li>Tool calls go to <code>opensim-console2mcp</code> (server admin), <code>opensim-metaverse2mcp</code> (in-world actions), or <code>opensim-blender</code> (3D authoring tools).</li>
 <li>Results return back through Opencode and are sent to you in-world.</li>
 </ol>
 <div class="admonition tip">
