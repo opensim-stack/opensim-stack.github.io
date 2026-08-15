@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://opensim-stack.github.io/docs/advanced/building-environment/">
       
       
-        <link rel="prev" href="../movement-navigation/">
+        <link rel="prev" href="../appearance/">
       
       
         <link rel="next" href="../content/">
@@ -373,6 +373,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../beginner/appearance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appearance and Wearables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../beginner/building/" class="md-nav__link">
         
   
@@ -627,6 +655,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../appearance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appearance and Wearables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -705,6 +761,72 @@
     <span class="md-ellipsis">
       
         Prompt examples for precise builds
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#freshness-aware-prim-inspection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Freshness-aware prim inspection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shapeedit-parameter-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shape/edit parameter notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linkset-level-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linkset-level workflows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#permissions-and-ownership-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permissions and ownership notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parcel-object-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parcel object discovery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commerce-tools-minimal-pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commerce tools (minimal pass)
       
     </span>
   </a>
@@ -1150,6 +1272,72 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#freshness-aware-prim-inspection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Freshness-aware prim inspection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shapeedit-parameter-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Shape/edit parameter notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linkset-level-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linkset-level workflows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#permissions-and-ownership-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permissions and ownership notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parcel-object-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parcel object discovery
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commerce-tools-minimal-pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commerce tools (minimal pass)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#uv-and-texturing-tips" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1220,6 +1408,23 @@
 <li><code>PrimUnlink</code></li>
 <li><code>PrimClone</code></li>
 <li><code>PrimInspect</code></li>
+<li><code>PrimFetchProperties</code></li>
+<li><code>PrimSetBuildParams</code></li>
+<li><code>PrimSetFlexible</code></li>
+<li><code>PrimSetLight</code></li>
+<li><code>PrimSetSculpt</code></li>
+<li><code>PrimInspectLinkset</code></li>
+<li><code>PrimSetLinksetRoot</code></li>
+<li><code>PrimReorderLinkset</code></li>
+<li><code>PrimBulkAdjustLinks</code></li>
+<li><code>PrimSetNextOwnerPermissions</code></li>
+<li><code>PrimSetSaleInfo</code></li>
+<li><code>PrimSetGroupOwnership</code></li>
+<li><code>PrimQueryObjects</code></li>
+<li><code>PrimRequestPayPrice</code></li>
+<li><code>PrimBuy</code></li>
+<li><code>WalletGetBalance</code></li>
+<li><code>Pay</code></li>
 <li><code>PrimFindByName</code></li>
 <li><code>PrimListNearby</code></li>
 </ul>
@@ -1232,6 +1437,86 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Rotate Marker-A by 90 degrees around Z and set scale to 1,2,0.5.
 </code></pre></div>
+<div class="highlight"><pre><span></span><code>Fetch fresh properties for prim localId 1234, wait 5 seconds, and report permissions, sale info, sit data, and full path/profile shape parameters.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Set prim 1234 path cut to 0.1..0.9, hollow to 0.2, taper X to -0.3, taper Y to 0.1, and profile hole to Circle.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Enable light on prim 1234 with RGB 1,0.95,0.8 intensity 0.7 radius 12 cutoff 60 falloff 0.8.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Enable flexible on prim 1234 with softness 2, tension 5, drag 2, gravity -1, wind 3.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Enable sculpt on prim 1234 as Mesh with texture UUID &lt;uuid&gt;, mirror false, invert false.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Inspect the full linkset tree for localId 1234 and show root, parent IDs, and per-link order.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Set linkset root to localId 5678 for the object that contains localId 1234.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Reorder linkset members to 1234,5678,9012 with root 9012.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Bulk-adjust links 5678,9012 by delta position 0,0,0.2 and yaw +10 degrees using child-only edits.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Set next-owner permissions on 1234,5678 to copy=true modify=false transfer=true.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Set object 1234 for sale as Copy at price 50.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Clear for-sale state on object 1234.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Assign 1234,5678 to group &lt;group-uuid&gt;, share with group, and deed to group.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Query objects in parcel local ID 123 where scriptedOnly=true and physicalOnly=false.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Query objects owned by &lt;owner-uuid&gt; with physicalOnly=true across the current simulator cache.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Request pay prices for object localId 1234 and show default/button values.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Buy object localId 1234 with sale type Copy at price 0.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Refresh and report my wallet balance.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Pay avatar &lt;avatar-uuid&gt; amount 1 with memo &quot;tip&quot;.
+</code></pre></div>
+<h2 id="freshness-aware-prim-inspection">Freshness-aware prim inspection<a class="headerlink" href="#freshness-aware-prim-inspection" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>PrimInspect</code> reads from current simulator cache only.</li>
+<li><code>PrimFetchProperties</code> explicitly requests family + full object properties, waits up to <code>waitTimeoutSeconds</code>, and includes freshness metadata in the response.</li>
+<li>Rich inspect output now includes:</li>
+<li>detailed path/profile values (cut, taper, twist, shear, skew, hollow, revolutions)</li>
+<li>permissions masks and sale info</li>
+<li>sit/touch labels and sittable hint</li>
+<li>flexible/light/sculpt details (including mesh detection)</li>
+</ul>
+<h2 id="shapeedit-parameter-notes">Shape/edit parameter notes<a class="headerlink" href="#shapeedit-parameter-notes" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>PrimSetBuildParams</code> clamps values to safe protocol ranges used by shape packing.</li>
+<li>Use <code>PrimFetchProperties</code> after <code>PrimSetBuildParams</code> when you need fresh verification values.</li>
+<li>Use <code>PrimSetLight</code>, <code>PrimSetFlexible</code>, and <code>PrimSetSculpt</code> with <code>enabled=false</code> to disable those extra params.</li>
+</ul>
+<h2 id="linkset-level-workflows">Linkset-level workflows<a class="headerlink" href="#linkset-level-workflows" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>PrimInspectLinkset</code> returns the full root+children tree from any member local ID.</li>
+<li><code>PrimSetLinksetRoot</code> and <code>PrimReorderLinkset</code> use relink behavior (root prim is linked last).</li>
+<li><code>PrimBulkAdjustLinks</code> is the fastest way to apply coordinated offset/rotation/scale changes to selected child links.</li>
+</ul>
+<h2 id="permissions-and-ownership-notes">Permissions and ownership notes<a class="headerlink" href="#permissions-and-ownership-notes" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>PrimSetNextOwnerPermissions</code> updates copy/modify/transfer flags for next owner only.</li>
+<li><code>PrimSetSaleInfo</code> supports explicit for-sale setup and clearing for-sale state.</li>
+<li><code>PrimSetGroupOwnership</code> sets object group, applies/clears group-share permissions, and can request deed to group.</li>
+<li>Group deed requests depend on region rights and object/share constraints; use <code>PrimFetchProperties</code> after updates to verify results.</li>
+</ul>
+<h2 id="parcel-object-discovery">Parcel object discovery<a class="headerlink" href="#parcel-object-discovery" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>PrimQueryObjects</code> filters objects by parcel local ID, owner UUID, scripted status, and physical status.</li>
+<li>When filtering by parcel, use <code>forceRefreshParcelMap=true</code> if parcel boundaries may have changed recently.</li>
+<li>Returned payload includes each matched object's local/parent IDs, owner ID, scripted/physical flags, and position.</li>
+</ul>
+<h2 id="commerce-tools-minimal-pass">Commerce tools (minimal pass)<a class="headerlink" href="#commerce-tools-minimal-pass" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>PrimRequestPayPrice</code> queries the simulator pay dialog pricing payload for an object UUID/local ID.</li>
+<li><code>PrimBuy</code> sends an object purchase request and supports explicit 0-price (<code>L$0</code>) purchases.</li>
+<li><code>WalletGetBalance</code> can return cached balance or force a refresh request before returning.</li>
+<li><code>Pay</code> submits a money transfer request to avatar/object/group targets.</li>
+</ul>
 <h2 id="uv-and-texturing-tips">UV and texturing tips<a class="headerlink" href="#uv-and-texturing-tips" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Use <code>PrimApplyUvPreset</code> for fast outcomes (<code>fit</code>, <code>reset</code>, <code>tile2x2</code>, <code>rotate90</code>, and more).</li>
