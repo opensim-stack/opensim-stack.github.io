@@ -544,6 +544,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#find-items-faster-in-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Find items faster in inventory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#common-fixes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1250,6 +1261,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#find-items-faster-in-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Find items faster in inventory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#common-fixes" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1318,6 +1340,13 @@
 <div class="highlight"><pre><span></span><code>Rez inventory object item 9d4c7f0a-1111-2222-3333-444455556666 at 128,128,25 with yaw 90, wait for object, select it after rez, then scale to 2,2,2.
 </code></pre></div>
 <p>These map to <code>PrimReturnToOwner</code>, <code>PrimTake</code>, and <code>PrimRezFromInventory</code>.</p>
+<h2 id="find-items-faster-in-inventory">Find items faster in inventory<a class="headerlink" href="#find-items-faster-in-inventory" title="Permanent link">&para;</a></h2>
+<p>Use <code>InventoryList</code> filters when your inventory gets large:</p>
+<div class="highlight"><pre><span></span><code>List inventory recursively and only show entries with name containing Sign.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>List inventory in my Objects folder, type filter object, page size 50.
+</code></pre></div>
+<p>If results are paginated, reuse <code>NextCursor</code> from the response in your next <code>InventoryList</code> request and continue while <code>HasMore</code> is true.</p>
 <h2 id="common-fixes">Common fixes<a class="headerlink" href="#common-fixes" title="Permanent link">&para;</a></h2>
 <ul>
 <li>If strict inspection fails due to skipped primitives, convert/re-export the model with triangle faces.</li>
