@@ -784,6 +784,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#resolve-attachment-object-ids-for-task-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resolve attachment object IDs for task inventory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#appearance-refresh" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1305,6 +1316,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#resolve-attachment-object-ids-for-task-inventory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resolve attachment object IDs for task inventory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#appearance-refresh" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1381,6 +1403,7 @@
 <li><code>AppearanceAttachItem</code></li>
 <li><code>AppearanceSetAttachmentPointMapping</code></li>
 <li><code>AppearanceListAttachmentPointMappings</code></li>
+<li><code>AttachmentResolveObject</code></li>
 <li><code>AppearanceDetachItem</code></li>
 <li><code>AppearanceGetAttachedItemTransform</code></li>
 <li><code>AppearanceSetAttachedItemTransform</code></li>
@@ -1479,6 +1502,18 @@
 <p class="admonition-title">Transform update behavior</p>
 <p>Attachment transform updates are requested asynchronously through simulator object updates. Re-query state after a short delay to confirm final applied values.</p>
 </div>
+<h2 id="resolve-attachment-object-ids-for-task-inventory">Resolve attachment object IDs for task inventory<a class="headerlink" href="#resolve-attachment-object-ids-for-task-inventory" title="Permanent link">&para;</a></h2>
+<p>When you need prim <code>task inventory</code> from a worn attachment (for example the bridge prim), first resolve the attachment item UUID to the currently active in-world object UUID/local ID.</p>
+<p>Resolve one worn attachment item:</p>
+<div class="highlight"><pre><span></span><code>AttachmentResolveObject(itemId=&quot;11111111-2222-3333-4444-555555555555&quot;)
+</code></pre></div>
+<p>List task inventory using local ID:</p>
+<div class="highlight"><pre><span></span><code>TaskInventoryList(objectLocalId=123456, objectId=&quot;11111111-2222-3333-4444-555555555555&quot;, maxResults=200)
+</code></pre></div>
+<p>List task inventory using object UUID only (tool resolves current local ID from simulator cache):</p>
+<div class="highlight"><pre><span></span><code>TaskInventoryList(objectLocalId=0, objectId=&quot;11111111-2222-3333-4444-555555555555&quot;, maxResults=200)
+</code></pre></div>
+<p><code>AppearanceListWorn</code> also includes attachment <code>objectId</code> and <code>objectLocalId</code> when currently available, so you can often skip a separate resolve step.</p>
 <h2 id="appearance-refresh">Appearance refresh<a class="headerlink" href="#appearance-refresh" title="Permanent link">&para;</a></h2>
 <p>Normal refresh:</p>
 <div class="highlight"><pre><span></span><code>AppearanceRebake(forceRebake=false)
