@@ -850,6 +850,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#inventory-crud-and-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inventory CRUD and organization
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1282,6 +1293,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#inventory-crud-and-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inventory CRUD and organization
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1311,6 +1333,11 @@
 <li><code>AssetUploadInventory</code></li>
 <li><code>AssetDownload</code></li>
 <li><code>InventoryList</code></li>
+<li><code>InventoryCreateFolder</code></li>
+<li><code>InventoryMoveItem</code></li>
+<li><code>InventoryMoveFolder</code></li>
+<li><code>InventoryCopyItem</code></li>
+<li><code>InventoryLinkItem</code></li>
 </ul>
 <h2 id="inspection-modes">Inspection modes<a class="headerlink" href="#inspection-modes" title="Permanent link">&para;</a></h2>
 <p><code>MeshInspectGltf</code> supports strict and non-strict validation:</p>
@@ -1396,6 +1423,26 @@
 <li>Check <code>HasMore</code> to detect remaining entries.</li>
 <li><code>TotalMatched</code> reports total entries matching filters in the current query scope.</li>
 </ul>
+<h2 id="inventory-crud-and-organization">Inventory CRUD and organization<a class="headerlink" href="#inventory-crud-and-organization" title="Permanent link">&para;</a></h2>
+<p>Use these tools to keep large inventories structured:</p>
+<ul>
+<li><code>InventoryCreateFolder</code></li>
+<li><code>InventoryRenameFolder</code>, <code>InventoryRenameItem</code></li>
+<li><code>InventoryMoveFolder</code>, <code>InventoryMoveItem</code>, <code>InventoryMoveMany</code></li>
+<li><code>InventoryDeleteFolder</code>, <code>InventoryDeleteItem</code>, <code>InventoryDeleteMany</code></li>
+<li><code>InventoryCopyItem</code>, <code>InventoryLinkItem</code></li>
+</ul>
+<p>Prompt examples:</p>
+<div class="highlight"><pre><span></span><code>Create folder &quot;Project Props&quot; under parent 2e4d6f1c-1111-2222-3333-444455556666.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Move item 9d4c7f0a-1111-2222-3333-444455556666 to folder 7a7b7c7d-1111-2222-3333-444455556666.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Copy item 9d4c7f0a-1111-2222-3333-444455556666 into folder 7a7b7c7d-1111-2222-3333-444455556666 with name Project Sign v2.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Create a link to item 9d4c7f0a-1111-2222-3333-444455556666 in folder 7a7b7c7d-1111-2222-3333-444455556666 named Sign Shortcut.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Move items 9d4c7f0a-1111-2222-3333-444455556666,0a1b2c3d-1111-2222-3333-444455556666 into folder 7a7b7c7d-1111-2222-3333-444455556666.
+</code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Gate uploads with strict mode in production</p>
 <p>For automated pipelines, run <code>MeshInspectGltf</code> strict mode before <code>MeshUploadGltf</code> to prevent partial or degraded uploads.</p>
