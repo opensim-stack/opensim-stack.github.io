@@ -830,6 +830,39 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#friends-and-teleport-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Friends and teleport tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directory-and-search-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Directory and search tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avatar-profile-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Avatar profile tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#group-discovery-and-profile-tools" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1296,6 +1329,39 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#friends-and-teleport-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Friends and teleport tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directory-and-search-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Directory and search tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#avatar-profile-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Avatar profile tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#group-discovery-and-profile-tools" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1483,7 +1549,58 @@
 
 
 <h1 id="advanced-social-groups-and-session-control">Advanced Social, Groups, and Session Control<a class="headerlink" href="#advanced-social-groups-and-session-control" title="Permanent link">&para;</a></h1>
-<p>This page covers group-focused MCP workflows: membership visibility, group chat/session control, role/title management, and group notices.</p>
+<p>This page covers social MCP workflows: friends/friendship operations, teleport offers/requests, and group membership/session control.</p>
+<h2 id="friends-and-teleport-tools">Friends and teleport tools<a class="headerlink" href="#friends-and-teleport-tools" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>FriendList</code></li>
+<li><code>FriendOffersList</code></li>
+<li><code>FriendOfferSend</code></li>
+<li><code>FriendOfferRespond</code></li>
+<li><code>FriendRemove</code></li>
+<li><code>FriendSetRights</code></li>
+<li><code>FriendMapLocate</code></li>
+<li><code>TeleportOfferSend</code></li>
+<li><code>TeleportRequestSend</code></li>
+<li><code>TeleportOffersList</code></li>
+<li><code>TeleportRequestsList</code></li>
+<li><code>TeleportOfferRespond</code></li>
+</ul>
+<p>Operational notes:</p>
+<ul>
+<li><code>FriendList</code> includes online status; use <code>includeDetails=true</code> to inspect rights from both sides.</li>
+<li><code>FriendOfferRespond</code> uses pending incoming offers tracked by <code>FriendsManager</code> (<code>accept</code> or <code>decline</code>).</li>
+<li><code>FriendMapLocate</code> supports wait mode (<code>waitForReplySeconds &gt; 0</code>) to return region-handle and local/global coordinates.</li>
+<li><code>TeleportOffersList</code> and <code>TeleportRequestsList</code> expose pending IM-based teleport signals seen during this bot session.</li>
+<li><code>TeleportOfferRespond</code> requires requester UUID plus IM session UUID from a pending offer row.</li>
+</ul>
+<h2 id="directory-and-search-tools">Directory and search tools<a class="headerlink" href="#directory-and-search-tools" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>DirectorySearchPeople</code></li>
+<li><code>DirectorySearchGroups</code></li>
+<li><code>DirectorySearchPlaces</code></li>
+<li><code>DirectorySearchLand</code></li>
+</ul>
+<p>Operational notes:</p>
+<ul>
+<li>All directory tools return <code>summary</code>, <code>pagination</code>, and <code>results</code> payload blocks.</li>
+<li><code>pagination.hasMore=true</code> means you should call the same tool again with <code>pagination.nextQueryStart</code>.</li>
+<li><code>DirectorySearchPeople</code>, <code>DirectorySearchGroups</code>, and <code>DirectorySearchPlaces</code> usually use <code>queryStart</code> as page index (<code>0,1,2,...</code>).</li>
+<li><code>DirectorySearchLand</code> uses land-sale query offsets more often represented as <code>0,100,200,...</code>.</li>
+<li><code>DirectorySearchLand</code> supports <code>landType</code> values: <code>any</code>, <code>mainland</code>, <code>estate</code>, <code>auction</code> plus optional <code>maxPrice</code> and <code>minArea</code> filters.</li>
+</ul>
+<h2 id="avatar-profile-tools">Avatar profile tools<a class="headerlink" href="#avatar-profile-tools" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>AvatarProfileGet</code></li>
+<li><code>AvatarPicksList</code></li>
+<li><code>AvatarClassifiedsList</code></li>
+</ul>
+<p>Operational notes:</p>
+<ul>
+<li><code>AvatarProfileGet</code> returns UDP profile/interests fields and can optionally include AgentProfile capability payloads when available.</li>
+<li><code>AvatarPicksList</code> returns pick IDs/names first; use <code>includeDetails=true</code> to request per-pick details such as sim name, description, and global position.</li>
+<li><code>AvatarClassifiedsList</code> returns classified IDs/names first; <code>includeDetails=true</code> enriches with parcel/sim data, pricing, and creation/expiration timestamps.</li>
+<li>Detail lookups are best-effort; missing detail IDs are returned in <code>missingDetailPickIds</code> or <code>missingDetailClassifiedIds</code>.</li>
+</ul>
 <h2 id="group-discovery-and-profile-tools">Group discovery and profile tools<a class="headerlink" href="#group-discovery-and-profile-tools" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>GroupListCurrent</code></li>
@@ -1600,6 +1717,28 @@
 <li>For chat automation, verify active sessions with <code>GroupChatSessionsList</code> before sending.</li>
 </ol>
 <h2 id="prompt-examples">Prompt examples<a class="headerlink" href="#prompt-examples" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>List my friends with detailed rights and online status.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Show pending friendship offers and accept one from 99999999-8888-7777-6666-555555555555.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Send a teleport offer to 99999999-8888-7777-6666-555555555555 with message &quot;Join me at the sandbox stage&quot;.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Show pending teleport offers and decline the newest one.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Search people for &quot;cube&quot; starting at page 0.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Search groups for &quot;builders&quot; and continue with the returned nextQueryStart if hasMore is true.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Search places for &quot;sandbox&quot; from queryStart 0.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Search land listings of type mainland with maxPrice 5000 and minArea 512 starting at 0.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Get avatar profile and interests for 99999999-8888-7777-6666-555555555555 with capability details enabled.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>List picks for 99999999-8888-7777-6666-555555555555 with details.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>List classifieds for 99999999-8888-7777-6666-555555555555 with details.
+</code></pre></div>
 <div class="highlight"><pre><span></span><code>List my groups with details.
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Join group chat for 11111111-2222-3333-4444-555555555555 and wait up to 12 seconds.

@@ -1241,6 +1241,13 @@
 <h2 id="what-you-can-do-now">What you can do now<a class="headerlink" href="#what-you-can-do-now" title="Permanent link">&para;</a></h2>
 <ul>
 <li>List the groups your bot is currently in.</li>
+<li>List friends and see who is online.</li>
+<li>Send friendship offers and respond to incoming friendship requests.</li>
+<li>Send teleport offers or request a teleport invite.</li>
+<li>Respond to incoming teleport offers.</li>
+<li>Search people, groups, places, and land-for-sale listings.</li>
+<li>Read avatar profile/interests data by avatar UUID.</li>
+<li>List avatar profile picks and classifieds.</li>
 <li>Join and leave group chat sessions.</li>
 <li>Send group chat messages after joining a session.</li>
 <li>View group members, roles, titles, and notices.</li>
@@ -1251,6 +1258,30 @@
 </ul>
 <h2 id="starter-prompts">Starter prompts<a class="headerlink" href="#starter-prompts" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>Show my current groups.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Show my friends and who is online.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Show pending friendship offers.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Send a friendship request to avatar 99999999-8888-7777-6666-555555555555.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Send a teleport offer to 99999999-8888-7777-6666-555555555555 with message Meet me at the welcome area.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Show pending teleport offers.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Search people for name text cube.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Search groups for builders.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Search places for sandbox.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Search mainland land listings with max price 5000 and minimum area 512.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Show profile and interests for avatar 99999999-8888-7777-6666-555555555555.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>List picks for avatar 99999999-8888-7777-6666-555555555555 with details.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>List classifieds for avatar 99999999-8888-7777-6666-555555555555 with details.
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Join group chat for group UUID 11111111-2222-3333-4444-555555555555.
 </code></pre></div>
@@ -1281,6 +1312,7 @@
 <li>Use UUID copy/paste carefully; one typo can target the wrong group.</li>
 <li>Send a short test notice before sending an important estate-wide announcement.</li>
 <li>Use verification-enabled prompts for role and ban changes when possible.</li>
+<li>For directory results, check the <code>pagination</code> block and use <code>nextQueryStart</code> when <code>hasMore</code> is true.</li>
 </ol>
 <p>For exact tool names and structured role/group payloads, see <strong>Advanced Guide -&gt; Social, Groups, and Session Control</strong>.</p>
 
