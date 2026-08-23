@@ -39,6 +39,7 @@
       </a>
       <div class="hidden md:flex items-center gap-1">
         <a href="index.html" class="px-3 py-2 rounded-lg text-gray-100 hover:text-neon-primary transition-colors">Home</a>
+        <a href="the-bots.html" class="px-3 py-2 rounded-lg text-gray-100 hover:text-neon-primary transition-colors">The Bots</a>
         <a href="get-it.html" class="px-3 py-2 rounded-lg text-neon-primary transition-colors">Get It</a>
         <a href="play-it.html" class="px-3 py-2 rounded-lg text-gray-100 hover:text-neon-primary transition-colors">Play It</a>
         <a href="extend-it.html" class="px-3 py-2 rounded-lg text-gray-100 hover:text-neon-primary transition-colors">Extend It</a>
@@ -55,6 +56,7 @@
     <div id="mobile-menu" class="mobile-menu md:hidden border-t border-neon-primary/20 bg-dark-900/95 backdrop-blur">
       <div class="container mx-auto px-4 py-4 flex flex-col gap-2">
         <a href="index.html" class="px-4 py-2 rounded-lg text-gray-100 hover:bg-dark-700">Home</a>
+        <a href="the-bots.html" class="px-4 py-2 rounded-lg text-gray-100 hover:bg-dark-700">The Bots</a>
         <a href="get-it.html" class="px-4 py-2 rounded-lg text-gray-100 hover:bg-dark-700">Get It</a>
         <a href="play-it.html" class="px-4 py-2 rounded-lg text-gray-100 hover:bg-dark-700">Play It</a>
         <a href="extend-it.html" class="px-4 py-2 rounded-lg text-gray-100 hover:bg-dark-700">Extend It</a>
@@ -157,14 +159,13 @@ cd opensim-ai-docker</code></pre>
               </thead>
               <tbody>
                 <tr><td><code>OPENSIM_HOSTNAME</code></td><td><code>opensim</code></td><td>Public hostname for the grid. <strong>Required to change.</strong></td></tr>
-                <tr><td><code>OPENSIM_REGION_NAME</code></td><td><code>Welcome Island</code></td><td>Name of your first region.</td></tr>
+                <tr><td><code>OPENSIM_REGION_NAME</code></td><td><code>Botland</code></td><td>Name of your first region.</td></tr>
                 <tr><td><code>OPENSIM_REGION_PORT</code></td><td><code>9000</code></td><td>Simulator TCP/UDP port.</td></tr>
-                <tr><td><code>OPENSIM_ESTATE_OWNER_FIRST</code></td><td><code>Admin</code></td><td>Estate owner first name.</td></tr>
-                <tr><td><code>OPENSIM_ESTATE_OWNER_LAST</code></td><td><code>User</code></td><td>Estate owner last name.</td></tr>
+                <tr><td><code>OPENSIM_ESTATE_OWNER_FIRST</code></td><td><code>Bot</code></td><td>Estate owner first name.</td></tr>
+                <tr><td><code>OPENSIM_ESTATE_OWNER_LAST</code></td><td><code>Handler</code></td><td>Estate owner last name.</td></tr>
                 <tr><td><code>OPENSIM_ESTATE_OWNER_PASSWORD</code></td><td><code>changeme</code></td><td>Estate owner password. Change before exposing externally.</td></tr>
                 <tr><td><code>OPENSIM_LOGIN_FIRSTNAME</code></td><td><code>Bot</code></td><td>Bot avatar first name.</td></tr>
                 <tr><td><code>OPENSIM_LOGIN_LASTNAME</code></td><td><code>User</code></td><td>Bot avatar last name.</td></tr>
-                <tr><td><code>OPENSIM_LOGIN_PASSWORD</code></td><td><code>botpassword</code></td><td>Bot avatar password.</td></tr>
                 <tr><td><code>MARIADB_PASSWORD</code></td><td><code>opensimpassword</code></td><td>MariaDB application password.</td></tr>
                 <tr><td><code>MARIADB_ROOT_PASSWORD</code></td><td><code>rootpassword</code></td><td>MariaDB root password.</td></tr>
               </tbody>

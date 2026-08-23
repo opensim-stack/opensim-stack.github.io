@@ -25,3 +25,7 @@ python3 -m http.server 8000
 ```
 
 Then open <http://localhost:8000>.
+
+## Credits
+
+Example OAR file to [download](OAR-Tropical\(1X1\).tgz). [Tropical by Linda Kellie](https://outworldz.com/Sculpts/cgi/files/OAR-Tropical(1X1).txt).

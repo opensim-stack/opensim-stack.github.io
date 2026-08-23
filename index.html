@@ -49,6 +49,7 @@
 
       <div class="hidden md:flex items-center gap-1">
         <a href="index.html" class="px-3 py-2 rounded-lg text-gray-100 hover:text-neon-primary transition-colors">Home</a>
+        <a href="the-bots.html" class="px-3 py-2 rounded-lg text-gray-100 hover:text-neon-primary transition-colors">The Bots</a>
         <a href="get-it.html" class="px-3 py-2 rounded-lg text-gray-100 hover:text-neon-primary transition-colors">Get It</a>
         <a href="play-it.html" class="px-3 py-2 rounded-lg text-gray-100 hover:text-neon-primary transition-colors">Play It</a>
         <a href="extend-it.html" class="px-3 py-2 rounded-lg text-gray-100 hover:text-neon-primary transition-colors">Extend It</a>
@@ -67,6 +68,7 @@
     <div id="mobile-menu" class="mobile-menu md:hidden border-t border-neon-primary/20 bg-dark-900/95 backdrop-blur">
       <div class="container mx-auto px-4 py-4 flex flex-col gap-2">
         <a href="index.html" class="px-4 py-2 rounded-lg text-gray-100 hover:bg-dark-700">Home</a>
+        <a href="the-bots.html" class="px-4 py-2 rounded-lg text-gray-100 hover:bg-dark-700">The Bots</a>
         <a href="get-it.html" class="px-4 py-2 rounded-lg text-gray-100 hover:bg-dark-700">Get It</a>
         <a href="play-it.html" class="px-4 py-2 rounded-lg text-gray-100 hover:bg-dark-700">Play It</a>
         <a href="extend-it.html" class="px-4 py-2 rounded-lg text-gray-100 hover:bg-dark-700">Extend It</a>
@@ -93,14 +95,28 @@
             Your virtual world,<br>
             <span class="gradient-text neon-text">powered by Agentic AI</span>
           </h1>
-          <p class="text-lg lg:text-xl text-gray-300 max-w-xl leading-relaxed">
-            A  <a href="https://www.docker.com/" target="_blank" rel="noopener" class="text-neon-primary hover:text-neon-secondary transition-colors underline decoration-neon-primary/50 hover:decoration-neon-secondary">Docker</a> stack for <a href="http://opensimulator.org/" target="_blank" rel="noopener" class="text-neon-primary hover:text-neon-secondary transition-colors underline decoration-neon-primary/50 hover:decoration-neon-secondary">OpenSimulator</a> that integrates MCP servers, a bot client, <a href="https://www.blender.org/" target="_blank" rel="noopener" class="text-neon-primary hover:text-neon-secondary transition-colors underline decoration-neon-primary/50 hover:decoration-neon-secondary">Blender</a>, and <a href="https://opencode.ai/" target="_blank" rel="noopener" 
-                class="text-neon-primary hover:text-neon-secondary transition-colors underline decoration-neon-primary/50 hover:decoration-neon-secondary">Opencode</a> 
-                so you can build, manage, and explore your grid, and even create 
-                new 3D assets and import them into the world, and iterate in-world from 
-                natural-language workflows.
-          </p>
-          <div class="flex flex-wrap gap-4">
+					<p
+						class="text-lg lg:text-xl text-gray-300 max-w-xl leading-relaxed">
+						A <a href="https://www.docker.com/" target="_blank" rel="noopener"
+							class="text-neon-primary hover:text-neon-secondary transition-colors underline decoration-neon-primary/50 hover:decoration-neon-secondary">Docker</a>
+						stack for <a href="http://opensimulator.org/" target="_blank"
+							rel="noopener"
+							class="text-neon-primary hover:text-neon-secondary transition-colors underline decoration-neon-primary/50 hover:decoration-neon-secondary">OpenSimulator</a>
+						that integrates MCP servers, a bot client, <a
+							href="https://www.blender.org/" target="_blank" rel="noopener"
+							class="text-neon-primary hover:text-neon-secondary transition-colors underline decoration-neon-primary/50 hover:decoration-neon-secondary">Blender</a>,
+						<a href="https://opencode.ai/" target="_blank" rel="noopener"
+							class="text-neon-primary hover:text-neon-secondary transition-colors underline decoration-neon-primary/50 hover:decoration-neon-secondary">Opencode</a>
+						and pretty much any <a href="https://opencode.ai/docs/providers/#directory" class="text-neon-primary hover:text-neon-secondary transition-colors underline decoration-neon-primary/50 hover:decoration-neon-secondary">AI provider</a> or <a href="https://opencode.ai/docs/zen/#models" class="text-neon-primary hover:text-neon-secondary transition-colors underline decoration-neon-primary/50 hover:decoration-neon-secondary">model</a> you want to use.
+					</p>
+                    <p
+                        class="text-lg lg:text-xl text-gray-300 max-w-xl leading-relaxed">
+						You can build, manage, and explore your grid, all aided by a voice capable bot.
+						Your assistant can spawn other more specialised bots. You can even create
+						new 3D assets and import them into the world, and iterate in-world
+						from natural-language workflows.
+					</p>
+					<div class="flex flex-wrap gap-4">
             <a href="get-it.html" class="px-6 py-3 rounded-lg bg-neon-primary text-white font-semibold hover:bg-violet-500 transition-colors btn-glow shadow-[0_0_30px_rgba(139,92,246,0.4)]">
               Get Started
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -222,7 +238,7 @@ by other users? If so, list them.</code></pre>
             </svg>
           </div>
           <h3 class="text-xl font-bold mb-2 text-white">Voice-Ready Bot</h3>
-          <p class="text-gray-400">Give your AI bot a voice and let it speak in-world with low-latency Piper synthesis routed through the stack.</p>
+          <p class="text-gray-400">Give your AI bot a voice and let it speak in-world with low-latency Piper synthesis streamed via Janus WebRTC.</p>
           <p class="text-xs text-gray-500 mt-2">Support for speech-to-text is planned.</p>
         </div>
 
@@ -243,7 +259,7 @@ by other users? If so, list them.</code></pre>
             </svg>
           </div>
           <h3 class="text-xl font-bold mb-2 text-white">MCP Bridges</h3>
-          <p class="text-gray-400">Three MCP servers now power the stack: REST console admin, in-world bot control, and Blender authoring tools. Opencode connects to all three.</p>
+          <p class="text-gray-400">Three MCP servers power the stack: REST console admin, in-world bot control, and Blender authoring tools. The spawner adds bot lifecycle control on top.</p>
         </div>
 
         <div class="bg-dark-800/80 backdrop-blur feature-card p-6 rounded-xl animate-on-scroll" style="transition-delay: 500ms;">
@@ -253,7 +269,7 @@ by other users? If so, list them.</code></pre>
             </svg>
           </div>
           <h3 class="text-xl font-bold mb-2 text-white">Docker Simplicity</h3>
-          <p class="text-gray-400">One compose file brings up OpenSimulator, MariaDB, the MCP sidecars, and Opencode. Source and release modes supported.</p>
+          <p class="text-gray-400">One compose file brings up OpenSimulator, MariaDB, MCP sidecars, Opencode, and opensim-spawner. Bots run in their own containers with resource limits.</p>
         </div>
 
         <div class="bg-dark-800/80 backdrop-blur feature-card p-6 rounded-xl animate-on-scroll" style="transition-delay: 600ms;">
@@ -318,6 +334,14 @@ by other users? If so, list them.</code></pre>
           <p class="text-sm text-gray-400">Bot-side MCP server that exposes in-world tools for movement, building, and inventory.</p>
         </a>
 
+        <a href="https://github.com/opensim-stack/opensim-spawner" target="_blank" rel="noopener" class="bg-dark-800/80 backdrop-blur stack-card p-6 rounded-xl border border-amber-500/20 animate-on-scroll" style="transition-delay: 450ms;">
+          <div class="flex items-center gap-4 mb-3">
+            <div class="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-300 font-bold">SP</div>
+            <h3 class="text-lg font-bold text-white">opensim-spawner</h3>
+          </div>
+          <p class="text-sm text-gray-400">Creates and manages multi-bot AI runtime instances on demand, including isolated opencode and metaverse2mcp containers per bot.</p>
+        </a>
+
         <a href="https://github.com/opensim-stack/opensim-blender" target="_blank" rel="noopener" class="bg-dark-800/80 backdrop-blur stack-card p-6 rounded-xl border border-fuchsia-500/20 animate-on-scroll" style="transition-delay: 500ms;">
           <div class="flex items-center gap-4 mb-3">
             <div class="w-10 h-10 rounded-lg bg-fuchsia-500/20 flex items-center justify-center text-fuchsia-300 font-bold">BL</div>
@@ -332,6 +356,14 @@ by other users? If so, list them.</code></pre>
             <h3 class="text-lg font-bold text-white">opensim-piper</h3>
           </div>
           <p class="text-sm text-gray-400">Voice synthesis sidecar that powers bot speech with Piper HTTP endpoints for TTS and voice discovery.</p>
+        </a>
+
+        <a href="https://janus.conf.meetecho.com/" target="_blank" rel="noopener" class="bg-dark-800/80 backdrop-blur stack-card p-6 rounded-xl border border-sky-500/20 animate-on-scroll" style="transition-delay: 575ms;">
+          <div class="flex items-center gap-4 mb-3">
+            <div class="w-10 h-10 rounded-lg bg-sky-500/20 flex items-center justify-center text-sky-300 font-bold">JA</div>
+            <h3 class="text-lg font-bold text-white">opensim-janus</h3>
+          </div>
+          <p class="text-sm text-gray-400">Janus WebRTC server container used as a central voice-transport component for in-world voice support.</p>
         </a>
 
         <div class="bg-dark-800/80 backdrop-blur stack-card p-6 rounded-xl border border-orange-500/20 animate-on-scroll" style="transition-delay: 600ms;">
@@ -350,33 +382,44 @@ by other users? If so, list them.</code></pre>
     <section class="container mx-auto px-4 py-16">
       <div class="text-center max-w-3xl mx-auto mb-10 animate-on-scroll">
         <h2 class="text-4xl font-bold mb-4 text-white">Architecture Diagram</h2>
-        <p class="text-lg text-gray-400">Core runtime, MCP servers, and Blender authoring flow in one view.</p>
+        <p class="text-lg text-gray-400">Core runtime with on-demand multi-bot containers, MCP bridges, and the voice transport path in one view.</p>
       </div>
 
       <div class="bg-dark-800/80 backdrop-blur stack-card p-4 lg:p-6 rounded-xl border border-neon-primary/20 animate-on-scroll" style="transition-delay: 100ms;">
         <pre class="mermaid text-sm">
 flowchart TB
-  User[Viewer user] -->|IM commands| Bot[Bot avatar in OpenSimulator]
+  User[Viewer user] -->|IM commands| Bot[Bot avatars in OpenSimulator]
   Blender[Blender desktop app] -->|Author and export GLB/GLTF| OpenSim[opensim container]
 
   subgraph MCP["MCP Bridge Side"]
     Console[opensim-console2mcp]
-    Metaverse[opensim-metaverse2mcp]
     BlenderMCP[opensim-blender via blender-mcp]
-    Piper[opensim-piper]
+  end
+
+  Spawner[opensim-spawner]
+  Piper[opensim-piper]
+  Janus[opensim-janus]
+
+  subgraph BotRuntime["Per-bot runtime (0..N)"]
+    MetaverseN[opensim-metaverse2mcp]
+    OpencodeN[opensim-opencode]
+    MetaverseN <-->|MCP tools| OpencodeN
   end
 
   OpenSim -->|REST console| Console
-  Metaverse -->|Bot login and world actions| OpenSim
+  Spawner -->|Create/delete bot runtimes| MetaverseN
+  Spawner -->|Create/delete bot runtimes| OpencodeN
+  MetaverseN -->|Bot login and world actions| OpenSim
   BlenderMCP -->|Drive Blender tools| Blender
-  Metaverse -->|TTS over HTTP| Piper
-  Piper -->|Synthesize bot speech| Bot
+  MetaverseN -->|TTS over HTTP| Piper
+  MetaverseN -->|WebRTC voice session control| Janus
+  Piper -->|Synthesized audio stream| Janus
+  Janus <-->|WebRTC voice transport| Bot
   Bot -->|Voice replies| User
 
-  Opencode[opensim-opencode] <-->|MCP tools| Console
-  Opencode <-->|MCP tools| Metaverse
-  Opencode <-->|MCP tools| BlenderMCP
-  Provider[AI provider/model] <-->|Model calls| Opencode
+  OpencodeN <-->|MCP tools| Console
+  OpencodeN <-->|MCP tools| BlenderMCP
+  Provider[AI provider/model] <-->|Model calls| OpencodeN
         </pre>
       </div>
     </section>
