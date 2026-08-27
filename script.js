@@ -99,13 +99,14 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-carousel]').forEach(carousel => {
     const slides = carousel.querySelectorAll('.prompt-slide');
     if (slides.length < 2) return;
+    const intervalMs = Number(carousel.dataset.carouselMs) || 10000;
 
     let current = 0;
     setInterval(() => {
       slides[current].classList.remove('active');
       current = (current + 1) % slides.length;
       slides[current].classList.add('active');
-    }, 10000);
+    }, intervalMs);
   });
 
 });

@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -80,22 +81,58 @@
             <span class="w-8 h-8 rounded-lg bg-neon-primary/20 flex items-center justify-center text-neon-primary text-sm">1</span>
             Prerequisites
           </h2>
-          <div class="grid md:grid-cols-2 gap-6">
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="space-y-3">
+              <h3 class="text-lg font-semibold text-white">Operating System</h3>
+              <p class="text-gray-400 text-sm">You need a modern operating system that supports Docker. Linux, Mac OS or Windows with WSL2 are supported.</p>
+              <div class="grid grid-cols-3 gap-2">
+                <div class="rounded-lg border border-neon-accent/40 bg-dark-700/60 px-3 py-2 text-center text-xs text-gray-200">
+                  <i class="fa-brands fa-linux mx-auto text-base text-neon-accent" aria-hidden="true"></i>
+                  <span class="mt-1 block">Linux</span>
+                </div>
+                <div class="rounded-lg border border-neon-secondary/40 bg-dark-700/60 px-3 py-2 text-center text-xs text-gray-200">
+                  <i class="fa-brands fa-apple mx-auto text-base text-neon-secondary" aria-hidden="true"></i>
+                  <span class="mt-1 block">Mac OS</span>
+                </div>
+                <div class="rounded-lg border border-neon-primary/40 bg-dark-700/60 px-3 py-2 text-center text-xs text-gray-200">
+                  <i class="fa-brands fa-windows mx-auto text-base text-neon-primary" aria-hidden="true"></i>
+                  <span class="mt-1 block">Windows</span>
+                </div>
+              </div>
+            </div>
             <div class="space-y-3">
               <h3 class="text-lg font-semibold text-white">Docker Compose</h3>
               <p class="text-gray-400 text-sm">You need Docker Engine and Docker Compose v2 (<code>docker compose</code>) installed.</p>
-              <a href="https://docs.docker.com/compose/install/" target="_blank" rel="noopener" class="inline-block px-4 py-2 rounded-lg border border-neon-primary/50 text-gray-100 hover:bg-neon-primary/10 text-sm transition-colors">Install Docker Compose</a>
+              <a href="https://docs.docker.com/compose/install/" target="_blank" rel="noopener" class="block w-fit mx-auto rounded-lg border border-neon-primary/40 bg-dark-700/60 px-3 py-2 text-center text-xs text-gray-200 hover:bg-neon-primary/10 transition-colors">
+                <i class="fa-brands fa-docker mx-auto text-base text-neon-primary" aria-hidden="true"></i>
+                <span class="mt-1 block">Docker</span>
+              </a>
             </div>
             <div class="space-y-3">
               <h3 class="text-lg font-semibold text-white">OpenSimulator Viewer</h3>
               <p class="text-gray-400 text-sm">A viewer is how you log in to your grid. We recommend Firestorm, but any compatible viewer works.</p>
-              <div class="flex flex-wrap gap-2">
-                <a href="https://www.firestormviewer.org/" target="_blank" rel="noopener" class="px-4 py-2 rounded-lg border border-neon-secondary/50 text-gray-100 hover:bg-neon-secondary/10 text-sm transition-colors">Firestorm</a>
-                <a href="https://www.singularityviewer.org/downloads/" target="_blank" rel="noopener" class="px-4 py-2 rounded-lg border border-neon-accent/50 text-gray-100 hover:bg-neon-accent/10 text-sm transition-colors">Singularity</a>
-                <a href="https://sldev.pages-perso.free.fr/" target="_blank" rel="noopener" class="px-4 py-2 rounded-lg border border-neon-secondary/70 text-gray-100 hover:bg-neon-secondary/50 text-sm transition-colors">Cool VL</a>
+              <div class="grid grid-cols-3 gap-2">
+                <a href="https://www.firestormviewer.org/" target="_blank" rel="noopener" class="rounded-lg border border-neon-secondary/40 bg-dark-700/60 px-3 py-2 text-center text-xs text-gray-200 hover:bg-neon-secondary/10 transition-colors">
+                  <i class="fa-solid fa-fire mx-auto text-base text-neon-secondary" aria-hidden="true"></i>
+                  <span class="mt-1 block">Firestorm</span>
+                </a>
+                <a href="https://www.singularityviewer.org/downloads/" target="_blank" rel="noopener" class="rounded-lg border border-neon-accent/40 bg-dark-700/60 px-3 py-2 text-center text-xs text-gray-200 hover:bg-neon-accent/10 transition-colors">
+                  <i class="fa-solid fa-circle-dot mx-auto text-base text-neon-accent" aria-hidden="true"></i>
+                  <span class="mt-1 block">Singularity</span>
+                </a>
+                <a href="https://sldev.pages-perso.free.fr/" target="_blank" rel="noopener" class="rounded-lg border border-neon-primary/40 bg-dark-700/60 px-3 py-2 text-center text-xs text-gray-200 hover:bg-neon-primary/10 transition-colors">
+                  <i class="fa-regular fa-snowflake mx-auto text-base text-neon-primary" aria-hidden="true"></i>
+                  <span class="mt-1 block">Cool VL</span>
+                </a>
                 
               </div>
             </div>
+          </div>
+          <div class="mt-6 flex items-start gap-3 rounded-lg border border-amber-500/30 bg-amber-500/10 p-4 text-gray-100">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-7.938 4h15.876c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L2.33 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            <span>Most of the stack is multi-architecture and will work on intel or arm processors. However, there are some exceptions. See <a href="/docs/index.html" target="_blank" rel="noopener" class="text-amber-300 hover:underline">Docs</a>.</span>
           </div>
         </div>
 
@@ -106,42 +143,21 @@
           </h2>
           <div class="space-y-6">
             <div>
-              <p class="text-gray-300 mb-3">Clone the repository and switch into it:</p>
+              <p class="text-gray-300 mb-3"><strong>One Line Install</strong>. This pipes the latest docker compose file directly to your local docker instance.</p>
               <div class="relative">
-                <pre id="code-clone"><code>git clone https://github.com/opensim-stack/opensim-ai-docker.git
-cd opensim-ai-docker</code></pre>
+                <pre id="code-clone"><code>curl https://opensim-stack.github.io/docker-compose.yml | \
+OPENSIM_HOSTNAME=$(hostname) docker compose -f - up -d</code></pre>
                 <button class="copy-btn absolute top-2 right-2 px-3 py-1 rounded bg-dark-700 text-gray-300 text-xs hover:bg-dark-600 transition-colors" data-target="#code-clone">Copy</button>
-              </div>
-            </div>
-            <div>
-              <p class="text-gray-300 mb-3">Create your environment file from the example:</p>
-              <div class="relative">
-                <pre id="code-env"><code>cp .env.example .env</code></pre>
-                <button class="copy-btn absolute top-2 right-2 px-3 py-1 rounded bg-dark-700 text-gray-300 text-xs hover:bg-dark-600 transition-colors" data-target="#code-env">Copy</button>
               </div>
             </div>
             <div class="flex items-start gap-3 p-4 rounded-lg border border-orange-500/30 bg-orange-500/10 text-gray-100">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
               </svg>
-              <span><strong>You must set <code>OPENSIM_HOSTNAME</code></strong> in <code>.env</code> or the stack will only work on <code>localhost</code>.</span>
-            </div>
-            <div>
-              <p class="text-gray-300 mb-3">Start the release stack (recommended for first-timers):</p>
-              <div class="relative">
-                <pre id="code-up"><code>docker compose -f docker-compose.release.yml up -d</code></pre>
-                <button class="copy-btn absolute top-2 right-2 px-3 py-1 rounded bg-dark-700 text-gray-300 text-xs hover:bg-dark-600 transition-colors" data-target="#code-up">Copy</button>
-              </div>
-            </div>
-            <div>
-              <p class="text-gray-300 mb-3">Or use the helper script for a local release build:</p>
-              <div class="relative">
-                <pre id="code-run"><code>./run-release.sh</code></pre>
-                <button class="copy-btn absolute top-2 right-2 px-3 py-1 rounded bg-dark-700 text-gray-300 text-xs hover:bg-dark-600 transition-colors" data-target="#code-run">Copy</button>
-              </div>
+              <span>Check the output of <code>hostname</code> command, that is the name you will use to connect to the grid and web UI.</span>
             </div>
             <div class="flex flex-wrap gap-3 pt-2">
-              <a href="https://github.com/opensim-stack/opensim-ai-docker/blob/main/docker-compose.release.yml" target="_blank" rel="noopener" class="px-4 py-2 rounded-lg bg-neon-primary text-white text-sm font-medium hover:bg-violet-500 transition-colors btn-glow">View docker-compose.release.yml</a>
+              <a href="https://github.com/opensim-stack/opensim-ai-docker/blob/main/docker-compose.yml" target="_blank" rel="noopener" class="px-4 py-2 rounded-lg bg-neon-primary text-white text-sm font-medium hover:bg-violet-500 transition-colors btn-glow">View docker-compose.yml</a>
               <a href="https://github.com/opensim-stack/opensim-ai-docker/blob/main/.env.example" target="_blank" rel="noopener" class="px-4 py-2 rounded-lg border border-neon-primary/50 text-gray-100 hover:bg-neon-primary/10 text-sm transition-colors">View .env.example</a>
             </div>
           </div>
@@ -150,32 +166,89 @@ cd opensim-ai-docker</code></pre>
         <div class="bg-dark-800/80 backdrop-blur border border-neon-accent/20 p-6 lg:p-8 rounded-xl animate-on-scroll">
           <h2 class="text-2xl font-bold mb-6 flex items-center gap-3 text-white">
             <span class="w-8 h-8 rounded-lg bg-neon-accent/20 flex items-center justify-center text-neon-accent text-sm">3</span>
-            Key Environment Variables
+            Configure Your Grid
           </h2>
-          <div class="overflow-x-auto">
-            <table class="data-table text-sm">
-              <thead>
-                <tr><th>Variable</th><th>Default</th><th>Purpose</th></tr>
-              </thead>
-              <tbody>
-                <tr><td><code>OPENSIM_HOSTNAME</code></td><td><code>opensim</code></td><td>Public hostname for the grid. <strong>Required to change.</strong></td></tr>
-                <tr><td><code>OPENSIM_REGION_NAME</code></td><td><code>Botland</code></td><td>Name of your first region.</td></tr>
-                <tr><td><code>OPENSIM_REGION_PORT</code></td><td><code>9000</code></td><td>Simulator TCP/UDP port.</td></tr>
-                <tr><td><code>OPENSIM_ESTATE_OWNER_FIRST</code></td><td><code>Bot</code></td><td>Estate owner first name.</td></tr>
-                <tr><td><code>OPENSIM_ESTATE_OWNER_LAST</code></td><td><code>Handler</code></td><td>Estate owner last name.</td></tr>
-                <tr><td><code>OPENSIM_ESTATE_OWNER_PASSWORD</code></td><td><code>changeme</code></td><td>Estate owner password. Change before exposing externally.</td></tr>
-                <tr><td><code>OPENSIM_LOGIN_FIRSTNAME</code></td><td><code>Bot</code></td><td>Bot avatar first name.</td></tr>
-                <tr><td><code>OPENSIM_LOGIN_LASTNAME</code></td><td><code>User</code></td><td>Bot avatar last name.</td></tr>
-                <tr><td><code>MARIADB_PASSWORD</code></td><td><code>opensimpassword</code></td><td>MariaDB application password.</td></tr>
-                <tr><td><code>MARIADB_ROOT_PASSWORD</code></td><td><code>rootpassword</code></td><td>MariaDB root password.</td></tr>
-              </tbody>
-            </table>
+          <div class="overflow-hidden">
+              <p class="text-gray-300 mb-3">OpenSim AI Stack now includes a purpose built web user interface with an easy <em>Setup Wizard</em>. 
+              Point your browser at <code>http://yourhostname:8993</code> to complete setting up your grid.</p>
+              <div class="prompt-carousel h-[520px] rounded-lg border border-neon-accent/30 bg-dark-900/40" data-carousel data-carousel-ms="5000">
+                <div class="prompt-slide active p-2">
+                  <div class="h-full bg-dark-900/70 p-2">
+                    <img src="webui-screenshots/opensim-stack-setup-1.png" alt="OpenSim web interface setup wizard step 1" class="h-full w-full object-contain">
+                  </div>
+                </div>
+                <div class="prompt-slide p-2">
+                  <div class="h-full bg-dark-900/70 p-2">
+                    <img src="webui-screenshots/opensim-stack-setup-2.png" alt="OpenSim web interface setup wizard step 2" class="h-full w-full object-contain">
+                  </div>
+                </div>
+                <div class="prompt-slide p-2">
+                  <div class="h-full bg-dark-900/70 p-2">
+                    <img src="webui-screenshots/opensim-stack-setup-3.png" alt="OpenSim web interface setup wizard step 3" class="h-full w-full object-contain">
+                  </div>
+                </div>
+                <div class="prompt-slide p-2">
+                  <div class="h-full bg-dark-900/70 p-2">
+                    <img src="webui-screenshots/opensim-stack-setup-4.png" alt="OpenSim web interface setup wizard step 4" class="h-full w-full object-contain">
+                  </div>
+                </div>
+                <div class="prompt-slide p-2">
+                  <div class="h-full bg-dark-900/70 p-2">
+                    <img src="webui-screenshots/opensim-stack-setup-5.png" alt="OpenSim web interface setup wizard step 5" class="h-full w-full object-contain">
+                  </div>
+                </div>
+                <div class="prompt-slide p-2">
+                  <div class="h-full bg-dark-900/70 p-2">
+                    <img src="webui-screenshots/opensim-stack-login.png" alt="OpenSim web interface login screen" class="h-full w-full object-contain">
+                  </div>
+                </div>
+                <div class="prompt-slide p-2">
+                  <div class="h-full bg-dark-900/70 p-2">
+                    <img src="webui-screenshots/opensim-stack-register.png" alt="OpenSim web interface registration screen" class="h-full w-full object-contain">
+                  </div>
+                </div>
+                <div class="prompt-slide p-2">
+                  <div class="h-full bg-dark-900/70 p-2">
+                    <img src="webui-screenshots/opensim-stack-approve.png" alt="OpenSim web interface approval screen" class="h-full w-full object-contain">
+                  </div>
+                </div>
+                <div class="prompt-slide p-2">
+                  <div class="h-full bg-dark-900/70 p-2">
+                    <img src="webui-screenshots/opensim-stack-create-user.png" alt="OpenSim web interface create user screen" class="h-full w-full object-contain">
+                  </div>
+                </div>
+                <div class="prompt-slide p-2">
+                  <div class="h-full bg-dark-900/70 p-2">
+                    <img src="webui-screenshots/opensim-stack-users.png" alt="OpenSim web interface users management screen" class="h-full w-full object-contain">
+                  </div>
+                </div>
+                <div class="prompt-slide p-2">
+                  <div class="h-full bg-dark-900/70 p-2">
+                    <img src="webui-screenshots/opensim-stack-bots.png" alt="OpenSim web interface bots management screen" class="h-full w-full object-contain">
+                  </div>
+                </div>
+                <div class="prompt-slide p-2">
+                  <div class="h-full bg-dark-900/70 p-2">
+                    <img src="webui-screenshots/opensim-stack-simulators.png" alt="OpenSim web interface simulators management screen" class="h-full w-full object-contain">
+                  </div>
+                </div>
+                <div class="prompt-slide p-2">
+                  <div class="h-full bg-dark-900/70 p-2">
+                    <img src="webui-screenshots/opensim-stack-stack.png" alt="OpenSim web interface stack overview screen" class="h-full w-full object-contain">
+                  </div>
+                </div>
+                <div class="prompt-slide p-2">
+                  <div class="h-full bg-dark-900/70 p-2">
+                    <img src="webui-screenshots/opensim-stack-working.png" alt="OpenSim web interface working status screen" class="h-full w-full object-contain">
+                  </div>
+                </div>
+              </div>
           </div>
           <div class="flex items-start gap-3 p-4 rounded-lg border border-cyan-500/30 bg-cyan-500/10 text-gray-100 mt-6">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <span>See <a href="https://github.com/opensim-stack/opensim-ai-docker/blob/main/.env.example" target="_blank" rel="noopener" class="text-cyan-400 hover:underline">.env.example</a> for the full list of variables, including MCP ports, Opencode settings, and LSL bridge options.</span>
+            <span>See <a href="docs/beginner/quick-start/index.html" target="_blank" rel="noopener" class="text-cyan-400 hover:underline">Docs</a> for other ways to install.</span>
           </div>
         </div>
       </div>

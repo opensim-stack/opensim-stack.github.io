@@ -1048,17 +1048,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bot-control-hardening" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bot control hardening
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#password-change-operations-after-deployment" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1329,17 +1318,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#bot-control-hardening" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bot control hardening
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#password-change-operations-after-deployment" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1397,41 +1375,25 @@
 <h2 id="credentials-you-should-change">Credentials you should change<a class="headerlink" href="#credentials-you-should-change" title="Permanent link">&para;</a></h2>
 <p>Update these in <code>.env</code> before opening ports to the internet:</p>
 <ul>
-<li><code>OPENSIM_ESTATE_OWNER_PASSWORD</code></li>
 <li><code>OPENSIM_CONSOLE_USER</code></li>
 <li><code>OPENSIM_CONSOLE_PASS</code></li>
 <li><code>MARIADB_PASSWORD</code></li>
 <li><code>MARIADB_ROOT_PASSWORD</code></li>
-<li><code>OPENCODE_SERVER_PASSWORD</code> (if using Basic auth path)</li>
+<li><code>JANUS_API_TOKEN</code></li>
+<li><code>JANUS_ADMIN_TOKEN</code></li>
 </ul>
+<p><em>Run <code>./generate-janus-tokens.sh</code> to update Janus credentials.</em></p>
 <h2 id="api-and-transport-hardening">API and transport hardening<a class="headerlink" href="#api-and-transport-hardening" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Set <code>METAVERSE_MCP_HTTP_BEARER_TOKEN</code> to protect metaverse MCP endpoint.</li>
-<li>Use strong credentials for Opencode server auth paths.</li>
 <li>Restrict host firewall exposure to only required ports.</li>
 <li>Keep private services on Docker internal network when possible.</li>
-</ul>
-<h2 id="bot-control-hardening">Bot control hardening<a class="headerlink" href="#bot-control-hardening" title="Permanent link">&para;</a></h2>
-<p>Use handler restrictions:</p>
-<ul>
-<li><code>OPENSIM_BOT_HANDLER_FIRSTNAME</code></li>
-<li><code>OPENSIM_BOT_HANDLER_LASTNAME</code></li>
-</ul>
-<p>Use dialog bridge trust restrictions:</p>
-<ul>
-<li><code>OPENCODE_LSL_DIALOG_BRIDGE_TRUSTED_OWNER_ID</code></li>
-<li><code>OPENCODE_LSL_DIALOG_BRIDGE_TRUSTED_OBJECT_ID</code></li>
-<li><code>OPENCODE_LSL_DIALOG_BRIDGE_REQUIRE_TRUSTED_SENDER=true</code></li>
 </ul>
 <h2 id="password-change-operations-after-deployment">Password change operations after deployment<a class="headerlink" href="#password-change-operations-after-deployment" title="Permanent link">&para;</a></h2>
 <p>Reset an account password through console command path:</p>
 <div class="highlight"><pre><span></span><code>reset user password First Last NewStrongPassword
 </code></pre></div>
-<p>Rotate console access credentials by updating <code>.env</code>, then restart affected services:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
-
-docker<span class="w"> </span>compose<span class="w"> </span>restart<span class="w"> </span>opensim<span class="w"> </span>opensim-console2mcp
-</code></pre></div>
+<p>Rotate console access credentials by updating <code>.env</code>, then restart affected services in web UI.
+```</p>
 <h2 id="network-and-host-hygiene">Network and host hygiene<a class="headerlink" href="#network-and-host-hygiene" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Use reverse proxy/TLS in front of exposed HTTP endpoints.</li>

@@ -1382,22 +1382,16 @@
 <li><code>OPENCODE_INITIAL_PROVIDER</code></li>
 <li><code>OPENCODE_INITIAL_MODEL</code></li>
 <li><code>OPENCODE_REQUEST_TIMEOUT_SECONDS</code></li>
-<li><code>OPENSIM_BOT_HANDLER_FIRSTNAME</code></li>
-<li><code>OPENSIM_BOT_HANDLER_LASTNAME</code></li>
 <li><code>PROMPT_HANDLING_ENABLED</code></li>
 <li><code>PROMPT_PROJECT_AGENTS_ENABLED</code></li>
 <li><code>PROMPT_PROJECT_AGENTS_FILE</code></li>
 </ul>
 <h2 id="mcp-endpoint-wiring">MCP endpoint wiring<a class="headerlink" href="#mcp-endpoint-wiring" title="Permanent link">&para;</a></h2>
-<p>Main generated values in <code>opencode.json</code> are sourced from:</p>
-<ul>
-<li><code>OPENCODE_MCP_URL</code> (console MCP)</li>
-<li><code>OPENCODE_METAVERSE_MCP_URL</code> (metaverse MCP)</li>
-</ul>
 <p>Default in-stack endpoints:</p>
 <ul>
-<li><code>http://opensim-console2mcp:8997/mcp</code></li>
-<li><code>http://opensim-metaverse2mcp:8999/mcp</code></li>
+<li><code>http://opensim-ai-console2mcp:8997/mcp</code></li>
+<li><code>http://opensim-ai-blender:8997/mcp</code></li>
+<li><code>http://opensim-ai-metaverse2mcp-BotFirst-BotLast:8999/mcp</code></li>
 </ul>
 <h2 id="adding-more-mcp-servers">Adding more MCP servers<a class="headerlink" href="#adding-more-mcp-servers" title="Permanent link">&para;</a></h2>
 <p>You can extend <code>opencode.json</code> with additional remote MCP servers.</p>
@@ -1406,12 +1400,17 @@
 <span class="w">  </span><span class="nt">&quot;mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;local_host_mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;remote&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://opensim-console2mcp:8997/mcp&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://opensim-ai-console2mcp:8997/mcp&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;metaverse_mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;remote&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://opensim-metaverse2mcp:8999/mcp&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://opensim-ai-metaverse2mcp-BotFirst-BotLast:8999/mcp&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;blender_mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;remote&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://opensim-ai-blender:8997/mcp&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;extra_tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
