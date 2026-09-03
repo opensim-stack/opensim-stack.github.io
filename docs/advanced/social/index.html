@@ -373,6 +373,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../beginner/events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Event Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../beginner/movement-animation/" class="md-nav__link">
         
   
@@ -714,6 +742,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Eventing and Reactive Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../movement-navigation/" class="md-nav__link">
         
   
@@ -941,6 +997,28 @@
     <span class="md-ellipsis">
       
         Wake-word behavior
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chat-modalities-send-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chat modalities (send-side)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chat-modalities-receive-side-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chat modalities (receive-side filter)
       
     </span>
   </a>
@@ -1536,6 +1614,28 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#chat-modalities-send-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chat modalities (send-side)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chat-modalities-receive-side-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chat modalities (receive-side filter)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#command-authorization" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1801,6 +1901,27 @@
 <li>Multi-participant chats (group and local) require wake word prefixing:</li>
 <li><code>@&lt;botFirst&gt; &lt;botLast&gt; ...</code></li>
 <li><code>@Bot ...</code> is additionally accepted in the bot's own C&amp;C group chat.</li>
+</ul>
+<h3 id="chat-modalities-send-side">Chat modalities (send-side)<a class="headerlink" href="#chat-modalities-send-side" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Local chat send tools support explicit modality selection:</li>
+<li><code>Chat(message, channel, chatType?)</code> where <code>chatType</code> is optional and case-insensitive.</li>
+<li><code>ChatWhisper(message, channel)</code> as a convenience wrapper.</li>
+<li><code>ChatShout(message, channel)</code> as a convenience wrapper.</li>
+<li>If <code>chatType</code> is omitted, the tool defaults to <code>Normal</code>.</li>
+<li>Typical use is:</li>
+<li><code>Whisper</code> for nearby/quiet interaction,</li>
+<li><code>Normal</code> for standard local chat,</li>
+<li><code>Shout</code> for wider local radius.</li>
+</ul>
+<h3 id="chat-modalities-receive-side-filter">Chat modalities (receive-side filter)<a class="headerlink" href="#chat-modalities-receive-side-filter" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Incoming local and group chat is filtered by modality before AI routing.</li>
+<li>Configure allow-list with env var <code>LOCAL_CHAT_ALLOWED_TYPES</code>.</li>
+<li>Format: comma/pipe/space-separated <code>ChatType</code> names (case-insensitive), for example: <code>Normal,Whisper</code>.</li>
+<li>Default is <code>Normal</code>, which keeps existing behavior for most setups.</li>
+<li>Group IM receive messages (<code>SessionSend</code>) are treated as <code>Normal</code> for this filter.</li>
+<li>Messages with filtered-out modalities are ignored (with a diagnostic log line).</li>
 </ul>
 <h3 id="command-authorization">Command authorization<a class="headerlink" href="#command-authorization" title="Permanent link">&para;</a></h3>
 <ul>
