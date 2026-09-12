@@ -72,7 +72,7 @@
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-12 animate-on-scroll">
           <h1 class="text-4xl lg:text-6xl font-extrabold mb-4 text-white">Extend <span class="gradient-text neon-text">It</span></h1>
-          <p class="text-lg text-gray-400">Plug in more MCP servers and let your virtual world reach outside the grid.</p>
+          <p class="text-lg text-gray-400">Install an Add-on and let your virtual world reach outside the grid.</p>
         </div>
 
         <div class="bg-dark-800/80 backdrop-blur border border-neon-primary/20 p-6 lg:p-8 rounded-xl mb-8 animate-on-scroll">
@@ -80,7 +80,7 @@
             <span class="w-8 h-8 rounded-lg bg-neon-primary/20 flex items-center justify-center text-neon-primary text-sm">1</span>
             Why Extend?
           </h2>
-          <p class="text-gray-300 mb-6">The stack ships with two MCP bridges — console and in-world bot — but the Model Context Protocol ecosystem is huge. Adding extra MCP servers lets your AI agent read and write real-world data, turning your grid from a sandbox into an active participant in your workflows.</p>
+          <p class="text-gray-300 mb-6">The stack by default provides the basics to let your Bot move around in the world. But to give them access to a wider world, you are going to want an add-on. The <a href="https://github.com/opensim-stack/opensim-add-ons" target="_blank" rel="noopener" class="text-neon-primary hover:underline">OpenSim AI Stack Add-On Repository</a> is currently small, but growing, giving your bot access to the database, or blender, or the OpenSim console. Most add-ons are based around <em>MCP Servers</em>, and the Model Context Protocol ecosystem is huge, so make a feature request if there is any add-on you'd like to see. Or <a href="https://github.com/opensim-stack/opensim-add-ons/pulls" target="_blank" rel="noopener" class="text-neon-primary hover:underline">make one yourself!</a> it's pretty easy if there is already a Docker image on Docker Hub.</p>
           <div class="grid md:grid-cols-2 gap-4">
             <div class="bg-dark-700/50 p-4 rounded-lg border border-neon-primary/10">
               <h3 class="font-semibold text-neon-primary mb-2">Database Access</h3>
@@ -112,56 +112,9 @@
         <div class="bg-dark-800/80 backdrop-blur border border-neon-secondary/20 p-6 lg:p-8 rounded-xl mb-8 animate-on-scroll">
           <h2 class="text-2xl font-bold mb-6 flex items-center gap-3 text-white">
             <span class="w-8 h-8 rounded-lg bg-neon-secondary/20 flex items-center justify-center text-neon-secondary text-sm">2</span>
-            How to Add a New MCP Server
+            Enable An Add-On
           </h2>
-          <div class="space-y-6">
-            <p class="text-gray-300">The stack runs MCP over HTTP. Each MCP server is a separate container or process that exposes its tools at a URL, and Opencode connects to it as a remote server. To add a new MCP server, run it somewhere reachable on your network, then add its URL to the <code>mcp</code> section of <code>opencode.json</code> and restart Opencode.</p>
-            <ol class="list-decimal list-inside space-y-3 text-gray-300">
-              <li>Deploy the MCP server you want to add (for example, as another Docker service on the same compose network).</li>
-              <li>Edit <code>/config/bots/Governor-Bot/opencode.json</code> inside the Opencode container (or the mounted workspace volume).</li>
-              <li>Add a new entry under <code>mcp</code> with <code>"type": "remote"</code> and the server's HTTP URL.</li>
-              <li>Restart the Opencode service so it picks up the new tools: <code>docker compose restart opensim-opencode</code>.</li>
-              <li>Ask the bot what new tools are available to confirm the connection.</li>
-            </ol>
-            <div class="relative">
-              <pre id="code-mcp"><code>{
-  "mcp": {
-    "local_host_mcp": {
-      "type": "remote",
-      "url": "http://opensim-console2mcp:8997/mcp",
-      "enabled": true
-    },
-    "metaverse_mcp": {
-      "type": "remote",
-      "url": "http://opensim-metaverse2mcp:8999/mcp",
-      "enabled": true
-    },
-    "blender_mcp": {
-      "type": "remote",
-      "url": "http://opensim-blender:8996/mcp",
-      "enabled": true
-    },
-    "database_mcp": {
-      "type": "remote",
-      "url": "http://mcp-database:8080/mcp",
-      "enabled": true
-    },
-    "email_mcp": {
-      "type": "remote",
-      "url": "http://mcp-email:8080/mcp",
-      "enabled": true
-    }
-  }
-}</code></pre>
-              <button class="copy-btn absolute top-2 right-2 px-3 py-1 rounded bg-dark-700 text-gray-300 text-xs hover:bg-dark-600 transition-colors" data-target="#code-mcp">Copy</button>
-            </div>
-            <div class="flex items-start gap-3 p-4 rounded-lg border border-cyan-500/30 bg-cyan-500/10 text-gray-100">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>Server names and URL paths vary by implementation. Check the README of the MCP server you are adding for the exact HTTP endpoint and any required authentication or environment variables.</span>
-            </div>
-          </div>
+          <img src="webui-screenshots/opensim-stack-add-ons.png" alt="OpenSim Stack Add-Ons" class="w-full rounded-lg">
         </div>
 
         <div class="bg-dark-800/80 backdrop-blur border border-neon-accent/20 p-6 lg:p-8 rounded-xl animate-on-scroll">
