@@ -16,7 +16,7 @@
         <link rel="prev" href="../building/">
       
       
-        <link rel="next" href="../land/">
+        <link rel="next" href="../inventory/">
       
       
         
@@ -648,6 +648,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../inventory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inventory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../land/" class="md-nav__link">
         
   
@@ -997,6 +1025,34 @@
     
   
     Content (Mesh Upload)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/inventory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inventory
   
 
     
@@ -1531,12 +1587,8 @@
 </code></pre></div>
 <p>These map to <code>PrimReturnToOwner</code>, <code>PrimTake</code>, and <code>PrimRezFromInventory</code>.</p>
 <h2 id="find-items-faster-in-inventory">Find items faster in inventory<a class="headerlink" href="#find-items-faster-in-inventory" title="Permanent link">&para;</a></h2>
-<p>Use <code>InventoryList</code> filters when your inventory gets large:</p>
-<div class="highlight"><pre><span></span><code>List inventory recursively and only show entries with name containing Sign.
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>List inventory in my Objects folder, type filter object, page size 50.
-</code></pre></div>
-<p>If results are paginated, reuse <code>NextCursor</code> from the response in your next <code>InventoryList</code> request and continue while <code>HasMore</code> is true.</p>
+<p>Inventory browsing guidance now lives on the separate <a href="../inventory/">Beginner Inventory</a> page.</p>
+<p>That page shows the new <code>InventoryList</code> -&gt; <code>InventoryListRetrieve</code> -&gt; <code>InventoryListClear</code> workflow and simple examples for searching large inventories.</p>
 <h2 id="organize-folders-and-items">Organize folders and items<a class="headerlink" href="#organize-folders-and-items" title="Permanent link">&para;</a></h2>
 <p>Useful prompts for day-to-day inventory cleanup:</p>
 <div class="highlight"><pre><span></span><code>Create a folder named Building Kit under my inventory root.

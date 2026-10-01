@@ -513,6 +513,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../beginner/inventory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inventory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../beginner/land/" class="md-nav__link">
         
   
@@ -862,6 +890,34 @@
     
   
     Content (Mesh Upload)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inventory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inventory
   
 
     
@@ -1944,6 +2000,7 @@
 <li><code>FriendOfferRespond</code></li>
 <li><code>FriendRemove</code></li>
 <li><code>FriendSetRights</code></li>
+<li><code>FriendRightsGet</code></li>
 <li><code>FriendMapLocate</code></li>
 <li><code>TeleportOfferSend</code></li>
 <li><code>TeleportRequestSend</code></li>
@@ -1955,6 +2012,9 @@
 <ul>
 <li><code>FriendList</code> includes online status; use <code>includeDetails=true</code> to inspect rights from both sides.</li>
 <li><code>FriendOfferRespond</code> uses pending incoming offers tracked by <code>FriendsManager</code> (<code>accept</code> or <code>decline</code>).</li>
+<li><code>FriendSetRights</code> maps directly to the three viewer toggles for a friend: see online, locate on map, and modify/take objects.</li>
+<li><code>FriendRightsGet</code> returns one-friend rights status with both directions: <code>theirRights</code> (what the bot grants) and <code>myRights</code> (what the friend grants).</li>
+<li>Accepting a friendship offer from a configured handler automatically grants all three rights by default.</li>
 <li><code>FriendMapLocate</code> supports wait mode (<code>waitForReplySeconds &gt; 0</code>) to return region-handle and local/global coordinates.</li>
 <li><code>TeleportOffersList</code> and <code>TeleportRequestsList</code> expose pending IM-based teleport signals seen during this bot session.</li>
 <li><code>TeleportOfferRespond</code> requires requester UUID plus IM session UUID from a pending offer row.</li>
@@ -2106,6 +2166,10 @@
 <div class="highlight"><pre><span></span><code>List my friends with detailed rights and online status.
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Show pending friendship offers and accept one from 99999999-8888-7777-6666-555555555555.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Get friend rights for 99999999-8888-7777-6666-555555555555.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Set friend rights for 99999999-8888-7777-6666-555555555555 with canSeeOnline true, canSeeOnMap true, canModifyObjects true.
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Send a teleport offer to 99999999-8888-7777-6666-555555555555 with message &quot;Join me at the sandbox stage&quot;.
 </code></pre></div>

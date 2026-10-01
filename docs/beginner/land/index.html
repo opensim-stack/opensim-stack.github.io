@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://opensim-stack.github.io/docs/beginner/land/">
       
       
-        <link rel="prev" href="../content/">
+        <link rel="prev" href="../inventory/">
       
       
         <link rel="next" href="../social/">
@@ -510,6 +510,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../inventory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inventory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -984,6 +1012,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../advanced/inventory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inventory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../advanced/land/" class="md-nav__link">
         
   
@@ -1433,7 +1489,8 @@
 <li>Read parcel details for where you are standing.</li>
 <li>Update parcel name, description, music URL, and media URL.</li>
 <li>Configure parcel landing point behavior.</li>
-<li>View parcel allow and ban lists.</li>
+<li>View and manage parcel allow and ban lists.</li>
+<li>View and update parcel flags (for example fly/build/access controls).</li>
 <li>Sample terrain heights and run terraform actions.</li>
 <li>Send region or estate broadcast messages (if your account has rights).</li>
 </ul>
@@ -1447,6 +1504,16 @@
 <div class="highlight"><pre><span></span><code>Set this parcel landing type to landing point at 128,128,25.
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Show the ban list for parcel local ID 42.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Add avatar aa2edc97-a74f-496e-8740-42121d493241 to the allow list for parcel 42.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Run ParcelAccessListSet with localId=42, listType=&quot;access&quot;, action=&quot;add&quot;, agentIdsCsv=&quot;aa2edc97-a74f-496e-8740-42121d493241&quot;.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Show parcel flags for parcel 42.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Enable UseAccessList and AllowFly, and disable UseBanList on parcel 42.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Run ParcelSetFlags with localId=42, enableFlagsCsv=&quot;UseAccessList,AllowFly&quot;, disableFlagsCsv=&quot;UseBanList&quot;.
 </code></pre></div>
 <h2 id="terrain-examples">Terrain examples<a class="headerlink" href="#terrain-examples" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>Sample terrain heights every 16 meters.

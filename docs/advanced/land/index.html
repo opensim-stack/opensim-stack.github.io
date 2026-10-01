@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://opensim-stack.github.io/docs/advanced/land/">
       
       
-        <link rel="prev" href="../content/">
+        <link rel="prev" href="../inventory/">
       
       
         <link rel="next" href="../social/">
@@ -513,6 +513,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../beginner/inventory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inventory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../beginner/land/" class="md-nav__link">
         
   
@@ -862,6 +890,34 @@
     
   
     Content (Mesh Upload)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inventory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inventory
   
 
     
@@ -1479,6 +1535,9 @@
 <li><code>ParcelSetInfo</code></li>
 <li><code>ParcelSetLanding</code></li>
 <li><code>ParcelAccessListGet</code></li>
+<li><code>ParcelAccessListSet</code></li>
+<li><code>ParcelFlagsGet</code></li>
+<li><code>ParcelSetFlags</code></li>
 <li><code>ParcelEjectUser</code></li>
 <li><code>ParcelJoin</code></li>
 <li><code>ParcelSubdivide</code></li>
@@ -1518,6 +1577,22 @@
 <div class="highlight"><pre><span></span><code>Update parcel 42 name to Main Landing, set media URL to https://example.com/screen.
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Set parcel 42 landing type to direct.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Replace the allow list on parcel 42 with avatars &lt;uuid-a&gt;,&lt;uuid-b&gt;.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>ParcelAccessListSet(localId=42, listType=&quot;access&quot;, action=&quot;replace&quot;, agentIdsCsv=&quot;&lt;uuid-a&gt;,&lt;uuid-b&gt;&quot;)
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Remove avatar &lt;uuid-a&gt; from the ban list on parcel 42.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>ParcelAccessListSet(localId=42, listType=&quot;ban&quot;, action=&quot;remove&quot;, agentIdsCsv=&quot;&lt;uuid-a&gt;&quot;)
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Get parcel flags for parcel 42 and show enabled states.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>ParcelFlagsGet(localId=42, forceRefresh=false)
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Enable UseAccessList,AllowFly and disable UseBanList,AllowDamage on parcel 42.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>ParcelSetFlags(localId=42, enableFlagsCsv=&quot;UseAccessList,AllowFly&quot;, disableFlagsCsv=&quot;UseBanList,AllowDamage&quot;)
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Run parcel permission diagnostics for parcel 42.
 </code></pre></div>
@@ -1567,7 +1642,7 @@
 <li>Terraform now uses a cache-safe reference-height fallback when terrain patch cache is incomplete.</li>
 <li>Patch-level workflows are available: verify cache coverage, diff RAW sources, and apply bounded offsets.</li>
 <li>For cache-cold sessions, prefer <code>TerrainPatchApplyOffsetRaw</code> with a known <code>.r32</code> source file/URL.</li>
-<li>Access list support is read-focused in current MCP flows.</li>
+<li>Access list updates are scope-specific (<code>access</code> or <code>ban</code>) and support <code>add</code>, <code>remove</code>, <code>replace</code>, and <code>clear</code> operations.</li>
 <li>Estate operations depend on simulator capabilities and your estate permission level.</li>
 </ul>
 <div class="admonition tip">

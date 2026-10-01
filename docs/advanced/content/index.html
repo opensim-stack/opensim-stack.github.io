@@ -16,7 +16,7 @@
         <link rel="prev" href="../building-environment/">
       
       
-        <link rel="next" href="../land/">
+        <link rel="next" href="../inventory/">
       
       
         
@@ -493,6 +493,34 @@
     
   
     Content (Mesh Upload)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../beginner/inventory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inventory
   
 
     
@@ -1005,6 +1033,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inventory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inventory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1577,20 +1633,8 @@
 </code></pre></div>
 <p>Use <code>PrimTake</code> with <code>takeCopy=true</code> for non-destructive edits and <code>takeCopy=false</code> for move semantics.</p>
 <h2 id="inventory-browsing-ergonomics">Inventory browsing ergonomics<a class="headerlink" href="#inventory-browsing-ergonomics" title="Permanent link">&para;</a></h2>
-<p><code>InventoryList</code> now supports name/type/date/creator filtering and cursor pagination.</p>
-<p>Prompt examples:</p>
-<div class="highlight"><pre><span></span><code>List inventory recursively from root, filter to names containing Bridge and type object, and return 100 entries.
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>List inventory in folder 2e4d6f1c-1111-2222-3333-444455556666 created after 2026-01-01T00:00:00Z by creator 11111111-2222-3333-4444-555555555555.
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>Continue the previous inventory query using cursor b2Zmc2V0OjEwMA== with page size 100.
-</code></pre></div>
-<p>Pagination notes:</p>
-<ul>
-<li>Pass <code>cursor</code> from <code>NextCursor</code> to fetch the next page.</li>
-<li>Check <code>HasMore</code> to detect remaining entries.</li>
-<li><code>TotalMatched</code> reports total entries matching filters in the current query scope.</li>
-</ul>
+<p>Inventory search, paging, and cache management now live on the separate <a href="../inventory/">Advanced Inventory</a> page.</p>
+<p>That page documents the task handle flow, filtering, cursor pagination, and cleanup expectations for <code>InventoryListRetrieve</code> and <code>InventoryListClear</code>.</p>
 <h2 id="inventory-crud-and-organization">Inventory CRUD and organization<a class="headerlink" href="#inventory-crud-and-organization" title="Permanent link">&para;</a></h2>
 <p>Use these tools to keep large inventories structured:</p>
 <ul>

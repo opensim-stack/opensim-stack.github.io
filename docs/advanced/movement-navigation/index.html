@@ -513,6 +513,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../beginner/inventory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inventory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../beginner/land/" class="md-nav__link">
         
   
@@ -863,6 +891,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#agent-monitoring-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent monitoring pattern
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#teleport-targeting-strategy" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -975,6 +1014,34 @@
     
   
     Content (Mesh Upload)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inventory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inventory
   
 
     
@@ -1396,6 +1463,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#agent-monitoring-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent monitoring pattern
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#teleport-targeting-strategy" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1463,6 +1541,7 @@
 <li><code>SetCameraHeading</code></li>
 <li><code>GetCameraState</code></li>
 <li><code>Follow</code></li>
+<li><code>MonitorAgent</code></li>
 <li><code>StopFollow</code></li>
 <li><code>Sit</code></li>
 <li><code>Stand</code></li>
@@ -1485,6 +1564,20 @@ AnimationStop(animation=&quot;DANCE1&quot;)
 <div class="highlight"><pre><span></span><code>Walk to 140,130,25 first, then fly to 200,200,60, then land.
 </code></pre></div>
 <p>This aligns with stepped autopilot behavior used by movement tools.</p>
+<h2 id="agent-monitoring-pattern">Agent monitoring pattern<a class="headerlink" href="#agent-monitoring-pattern" title="Permanent link">&para;</a></h2>
+<p>Use <code>MonitorAgent</code> when you need continuous presence tracking for another avatar UUID.
+The tool runs as a background <code>BotTaskHandle</code> and emits change events on runtime channel <code>agentMonitor</code> once per second at most.</p>
+<p>Current behavior is intentionally current-region scoped: if the target is not in the bot's current simulator, <code>region</code>, <code>position</code>, <code>velocity</code>, and <code>isFlying</code> are reported as unknown (<code>null</code>).
+External fallback probing is disabled by default; enable <code>AGENT_MONITOR_EXTERNAL_FALLBACK=true</code> only if you want occasional off-region online checks.</p>
+<p>Tracked attributes can transition between known and unknown and still emit updates:</p>
+<ul>
+<li>online presence</li>
+<li>region (if known)</li>
+<li>local position x/y/z (if known)</li>
+<li>fly state (if known)</li>
+<li>velocity vector (if known)</li>
+<li>heading in degrees (when consecutive known positions allow it)</li>
+</ul>
 <h2 id="teleport-targeting-strategy">Teleport targeting strategy<a class="headerlink" href="#teleport-targeting-strategy" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Use explicit region names plus coordinates when possible.</li>
