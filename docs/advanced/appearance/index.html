@@ -919,6 +919,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#outfit-discovery-and-wear-by-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Outfit discovery and wear by name
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#direct-wearable-controls" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1507,6 +1518,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#outfit-discovery-and-wear-by-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Outfit discovery and wear by name
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#direct-wearable-controls" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1620,6 +1642,8 @@
 <ul>
 <li><code>AppearanceListWorn</code></li>
 <li><code>AppearanceWearFolder</code></li>
+<li><code>ListOutfits</code></li>
+<li><code>AppearanceWearOutfit</code></li>
 <li><code>AppearanceSaveCurrentOutfit</code></li>
 <li><code>AppearanceWearWearableItem</code></li>
 <li><code>AppearanceRemoveWearableItem</code></li>
@@ -1674,6 +1698,14 @@
 <div class="highlight"><pre><span></span><code>AppearanceSaveCurrentOutfit(folderName=&quot;Evening Demo Look&quot;, parentFolderId=&quot;&quot;)
 </code></pre></div>
 <p><code>AppearanceWearFolder</code> returns category conflict context so you can see where add/replace semantics overlap.</p>
+<h2 id="outfit-discovery-and-wear-by-name">Outfit discovery and wear by name<a class="headerlink" href="#outfit-discovery-and-wear-by-name" title="Permanent link">&para;</a></h2>
+<p>List available outfit folders:</p>
+<div class="highlight"><pre><span></span><code>ListOutfits()
+</code></pre></div>
+<p>Wear by outfit folder name:</p>
+<div class="highlight"><pre><span></span><code>AppearanceWearOutfit(outfitName=&quot;Evening Demo Look&quot;)
+</code></pre></div>
+<p><code>ListOutfits</code> enumerates immediate child folders under the My Outfits root. <code>AppearanceWearOutfit</code> resolves by case-insensitive folder name under that same root and updates only the COF outfit-folder link.</p>
 <h2 id="direct-wearable-controls">Direct wearable controls<a class="headerlink" href="#direct-wearable-controls" title="Permanent link">&para;</a></h2>
 <p>Wear by item UUID (replace same wearable slot):</p>
 <div class="highlight"><pre><span></span><code>AppearanceWearWearableItem(itemId=&quot;11111111-2222-3333-4444-555555555555&quot;, replaceExistingSlot=true)
