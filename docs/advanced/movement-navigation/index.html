@@ -913,6 +913,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#map-lookup-and-region-handle-tooling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Map lookup and region-handle tooling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#operational-checks" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1485,6 +1496,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#map-lookup-and-region-handle-tooling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Map lookup and region-handle tooling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#operational-checks" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1535,6 +1557,8 @@
 <li><code>FlyTo</code></li>
 <li><code>TeleportTo</code></li>
 <li><code>TeleportToRegionHandle</code></li>
+<li><code>RegionUuid</code></li>
+<li><code>Map</code></li>
 <li><code>StopMovement</code></li>
 <li><code>StartMovement</code></li>
 <li><code>LookAt</code></li>
@@ -1583,6 +1607,22 @@ External fallback probing is disabled by default; enable <code>AGENT_MONITOR_EXT
 <li>Use explicit region names plus coordinates when possible.</li>
 <li>If region name collisions exist, use a region-handle or precise routing command.</li>
 <li>Confirm location with status before issuing object-edit operations.</li>
+</ul>
+<h2 id="map-lookup-and-region-handle-tooling">Map lookup and region-handle tooling<a class="headerlink" href="#map-lookup-and-region-handle-tooling" title="Permanent link">&para;</a></h2>
+<p>Use <code>RegionUuid</code> when you only have global map coordinates and need the region handle for follow-up operations.</p>
+<div class="highlight"><pre><span></span><code>RegionUuid(globalX=99712, globalY=102400)
+</code></pre></div>
+<p>Use <code>Map</code> to query map-layer entities directly from a region:</p>
+<div class="highlight"><pre><span></span><code>Map(regionHandle=&quot;0&quot;, itemType=&quot;AgentLocations&quot;, layerType=&quot;Objects&quot;)
+Map(regionHandle=&quot;1099511628032&quot;, itemType=&quot;LandForSale&quot;, layerType=&quot;Objects&quot;)
+Map(regionHandle=&quot;1099511628032&quot;, itemType=&quot;PgEvent&quot;, layerType=&quot;Objects&quot;)
+</code></pre></div>
+<p>Behavior notes:</p>
+<ul>
+<li><code>regionHandle="0"</code> means "use current simulator region handle".</li>
+<li><code>itemType</code> defaults to <code>AgentLocations</code>.</li>
+<li><code>layerType</code> defaults to <code>Objects</code>.</li>
+<li>JSON rows are type-aware and include subtype-specific fields (for example <code>avatarCount</code>, <code>price</code>, <code>description</code>, <code>flags</code>, <code>category</code>) in addition to shared map coordinates.</li>
 </ul>
 <h2 id="operational-checks">Operational checks<a class="headerlink" href="#operational-checks" title="Permanent link">&para;</a></h2>
 <p>Health endpoint for bot runtime:</p>
