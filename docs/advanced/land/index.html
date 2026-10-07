@@ -798,14 +798,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../movement-navigation/" class="md-nav__link">
+      <a href="../movement-animation/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Movement and Navigation
+    Movement and Animation
   
 
     
@@ -1542,6 +1542,8 @@
 <li><code>ParcelJoin</code></li>
 <li><code>ParcelSubdivide</code></li>
 <li><code>ParcelPermissionDiagnostics</code></li>
+<li><code>ParcelDeedToGroup</code></li>
+<li><code>ParcelReclaim</code></li>
 </ul>
 <h2 id="terrain-tools">Terrain tools<a class="headerlink" href="#terrain-tools" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1596,6 +1598,14 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Run parcel permission diagnostics for parcel 42.
 </code></pre></div>
+<div class="highlight"><pre><span></span><code>Deed the current parcel to group &lt;group-uuid&gt;.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>ParcelDeedToGroup(groupId=&quot;&lt;group-uuid&gt;&quot;, forceRefresh=false)
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Reclaim the parcel under the bot&#39;s current position.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>ParcelReclaim()
+</code></pre></div>
 <div class="highlight"><pre><span></span><code>Join parcels in bounds west=96 south=96 east=160 north=160.
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Subdivide parcels in bounds west=96 south=96 east=128 north=128.
@@ -1643,6 +1653,8 @@
 <li>Patch-level workflows are available: verify cache coverage, diff RAW sources, and apply bounded offsets.</li>
 <li>For cache-cold sessions, prefer <code>TerrainPatchApplyOffsetRaw</code> with a known <code>.r32</code> source file/URL.</li>
 <li>Access list updates are scope-specific (<code>access</code> or <code>ban</code>) and support <code>add</code>, <code>remove</code>, <code>replace</code>, and <code>clear</code> operations.</li>
+<li><code>ParcelDeedToGroup</code> only works when the bot currently owns the parcel under its position and has rights to deed to the target group.</li>
+<li><code>ParcelReclaim</code> uses the current simulator and parcel under the bot position; reclaim success depends on simulator/estate privileges.</li>
 <li>Estate operations depend on simulator capabilities and your estate permission level.</li>
 </ul>
 <div class="admonition tip">

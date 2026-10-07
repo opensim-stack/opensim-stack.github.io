@@ -505,6 +505,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#sitting-on-chairs-and-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sitting on chairs and objects
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#follow-and-demonstrate-workflow" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -911,14 +922,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced/movement-navigation/" class="md-nav__link">
+      <a href="../../advanced/movement-animation/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Movement and Navigation
+    Movement and Animation
   
 
     
@@ -1463,6 +1474,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#sitting-on-chairs-and-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sitting on chairs and objects
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#follow-and-demonstrate-workflow" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1550,6 +1572,21 @@
 <p class="admonition-title">Use built-in animation names</p>
 <p>Names like <code>wave</code>, <code>dance</code>, <code>clap</code>, <code>bow</code>, <code>laugh</code>, and <code>sit</code> resolve to the viewer's built-in animations. You can also pass an animation UUID directly.</p>
 </div>
+<h2 id="sitting-on-chairs-and-objects">Sitting on chairs and objects<a class="headerlink" href="#sitting-on-chairs-and-objects" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>Sit on prim 503191167.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Sit on the nearest chair.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Find the nearest explicit sit target within 15 meters and sit.
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Ground sit vs object sit</p>
+<p><code>sit</code> by itself does a ground sit. For furniture/chairs, use object-targeted sit requests (by local ID, by name, or nearest sittable prim).</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">If sit fails</p>
+<p>Move the bot closer to the chair and retry. Some objects require proximity before they return an <code>AvatarSitResponse</code>.</p>
+</div>
 <h2 id="follow-and-demonstrate-workflow">Follow-and-demonstrate workflow<a class="headerlink" href="#follow-and-demonstrate-workflow" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Ask the bot to come near you.</li>
@@ -1571,7 +1608,7 @@ Walk back to 128,128,25.
 <li>If an animation does not play, check that the name is a known built-in animation or provide a valid animation UUID.</li>
 </ul>
 <p>For avatar clothing and attachment prompts, see <strong>Beginner Guide -&gt; Appearance and Wearables</strong>.</p>
-<p>For tool-level details, see <strong>Advanced Guide -&gt; Movement and Navigation</strong>.</p>
+<p>For tool-level details, see <strong>Advanced Guide -&gt; Movement and Animation</strong>.</p>
 
 
 

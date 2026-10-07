@@ -798,14 +798,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../movement-navigation/" class="md-nav__link">
+      <a href="../movement-animation/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Movement and Navigation
+    Movement and Animation
   
 
     
@@ -2103,6 +2103,7 @@
 <h2 id="group-invite-and-ban-tools">Group invite and ban tools<a class="headerlink" href="#group-invite-and-ban-tools" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>GroupInviteUser</code></li>
+<li><code>GroupInviteRespond</code></li>
 <li><code>GroupBanListGet</code></li>
 <li><code>GroupBanSet</code></li>
 </ul>
@@ -2121,6 +2122,8 @@
 </code></pre></div>
 <p>Ban notes:</p>
 <ul>
+<li>Incoming group invitations are emitted as runtime event <code>groups.invite.received</code> (channel <code>friends</code>) with <code>groupId</code> and <code>sessionId</code> attributes.</li>
+<li><code>GroupInviteRespond</code> accepts <code>action=accept|decline</code>; pass <code>sessionId</code> when you want strict invite/session matching.</li>
 <li><code>GroupBanSet</code> supports <code>verifyAfterSubmit</code> and <code>verifyWaitSeconds</code>.</li>
 <li>Verification uses read-back from <code>GroupBanListGet</code>-equivalent state and returns classified outcomes.</li>
 </ul>

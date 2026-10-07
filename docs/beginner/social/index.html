@@ -900,14 +900,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced/movement-navigation/" class="md-nav__link">
+      <a href="../../advanced/movement-animation/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Movement and Navigation
+    Movement and Animation
   
 
     
@@ -1508,6 +1508,7 @@
 <li>Send a group notice (with optional attachment IDs).</li>
 <li>Set active group and active group title.</li>
 <li>Invite avatars to a group.</li>
+<li>Accept or decline incoming group invitations.</li>
 <li>View and manage group bans (if your role has permission).</li>
 </ul>
 <p>Friendship permissions note:
@@ -1554,6 +1555,8 @@
 <div class="highlight"><pre><span></span><code>Send a group notice to 11111111-2222-3333-4444-555555555555 with subject Weekly Meeting and message Meeting starts in 10 minutes.
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Invite avatar 99999999-8888-7777-6666-555555555555 to group 11111111-2222-3333-4444-555555555555 using the Everyone role.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>When a groups.invite.received event arrives, accept it with GroupInviteRespond using that groupId and action accept.
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Show banned agents for group 11111111-2222-3333-4444-555555555555.
 </code></pre></div>

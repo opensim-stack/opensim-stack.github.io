@@ -466,6 +466,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#handling-scripted-object-dialogs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Handling scripted object dialogs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#practical-tips" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -922,14 +933,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../advanced/movement-navigation/" class="md-nav__link">
+      <a href="../../advanced/movement-animation/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Movement and Navigation
+    Movement and Animation
   
 
     
@@ -1463,6 +1474,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#handling-scripted-object-dialogs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Handling scripted object dialogs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#practical-tips" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1538,7 +1560,7 @@
 <h2 id="event-channels-simple-view">Event channels (simple view)<a class="headerlink" href="#event-channels-simple-view" title="Permanent link">&para;</a></h2>
 <p>Use channels to control noise level:</p>
 <ul>
-<li><code>general</code> - login/disconnect/chat/inventory and other normal updates</li>
+<li><code>general</code> - login/disconnect/chat/inventory/script-dialog and other normal updates</li>
 <li><code>object</code> - high-volume object update stream</li>
 <li><code>teleport</code> - teleport-specific success/failure events</li>
 </ul>
@@ -1562,8 +1584,18 @@
 <li>"Filter chat events so only messages from <code>Governor Bot</code> show up."</li>
 <li>"Show event stream stats so I can see whether buffers are trimming."</li>
 <li>"Show me event history for the last 120 seconds for teleport failures."</li>
+<li>"Watch for <code>script.dialog.received</code> events and alert me when the bot needs to choose a button."</li>
 <li>"Unsubscribe <code>main-events</code>."</li>
 </ul>
+<h2 id="handling-scripted-object-dialogs">Handling scripted object dialogs<a class="headerlink" href="#handling-scripted-object-dialogs" title="Permanent link">&para;</a></h2>
+<p>When a scripted in-world object asks the bot to click a button, you receive <code>script.dialog.received</code> on <code>general</code>.</p>
+<p>Use this sequence:</p>
+<ol>
+<li>Read <code>pendingDialogHandle</code> from the event attributes.</li>
+<li>Call <code>ListScriptDialogs</code> (optionally filtered by that handle) to inspect message/buttons.</li>
+<li>Call <code>ScriptDialogChoice</code> with a 0-based <code>buttonIndex</code> to choose a button.</li>
+<li>Use <code>buttonIndex=-1</code> to cancel that pending dialog without sending any response.</li>
+</ol>
 <h2 id="practical-tips">Practical tips<a class="headerlink" href="#practical-tips" title="Permanent link">&para;</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">Use long-poll for reactive behavior</p>

@@ -16,7 +16,7 @@
         <link rel="prev" href="../voice/">
       
       
-        <link rel="next" href="../movement-navigation/">
+        <link rel="next" href="../movement-animation/">
       
       
         
@@ -924,6 +924,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#script-dialog-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script dialog workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#attribute-filters" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1044,14 +1055,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../movement-navigation/" class="md-nav__link">
+      <a href="../movement-animation/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Movement and Navigation
+    Movement and Animation
   
 
     
@@ -1646,6 +1657,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#script-dialog-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script dialog workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#attribute-filters" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1791,7 +1813,7 @@
 <h2 id="runtime-model">Runtime model<a class="headerlink" href="#runtime-model" title="Permanent link">&para;</a></h2>
 <h3 id="channels">Channels<a class="headerlink" href="#channels" title="Permanent link">&para;</a></h3>
 <ul>
-<li><code>general</code>: login/disconnect/chat/inventory-offer and similar lifecycle events</li>
+<li><code>general</code>: login/disconnect/chat/inventory-offer/script-dialog and similar lifecycle events</li>
 <li><code>object</code>: object update stream (high-volume)</li>
 <li><code>teleport</code>: teleport success/failure stream</li>
 </ul>
@@ -1832,7 +1854,19 @@
 <li>only failures: <code>teleport.failed,network.disconnected</code></li>
 <li>chat-focused: <code>chat.im.received,chat.local.received</code></li>
 <li>lifecycle: <code>login.success,login.failed,login.connected,network.disconnected</code></li>
+<li>scripted dialogs: <code>script.dialog.received</code></li>
 </ul>
+<h2 id="script-dialog-workflow">Script dialog workflow<a class="headerlink" href="#script-dialog-workflow" title="Permanent link">&para;</a></h2>
+<p>When a scripted object opens a dialog for the bot, runtime emits <code>script.dialog.received</code> on <code>general</code>.
+The event attributes include a <code>pendingDialogHandle</code> plus object/owner metadata and button labels.</p>
+<p>Typical handling loop:</p>
+<ol>
+<li>Poll <code>general</code> (or filtered <code>eventTypes="script.dialog.received"</code>).</li>
+<li>Read <code>pendingDialogHandle</code> from the event.</li>
+<li>Call <code>ListScriptDialogs(pendingDialogHandle="&lt;handle&gt;")</code> to inspect message/buttons.</li>
+<li>Reply with <code>ScriptDialogChoice(pendingDialogHandle="&lt;handle&gt;", buttonIndex=&lt;n&gt;)</code>.</li>
+<li>Use <code>buttonIndex=-1</code> to cancel/remove a pending dialog without clicking any button.</li>
+</ol>
 <h2 id="attribute-filters">Attribute filters<a class="headerlink" href="#attribute-filters" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>radiusMeters</code>: retain only events near current bot position (events without coordinates are excluded)</li>

@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://opensim-stack.github.io/docs/advanced/movement-navigation/">
+        <link rel="canonical" href="https://opensim-stack.github.io/docs/advanced/movement-animation/">
       
       
         <link rel="prev" href="../events/">
@@ -27,7 +27,7 @@
     
     
       
-        <title>Movement and Navigation - OpenSim AI Stack Docs</title>
+        <title>Movement and Animation - OpenSim AI Stack Docs</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#advanced-movement-and-navigation" class="md-skip">
+        <a href="#advanced-movement-and-animation" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Movement and Navigation
+              Movement and Animation
             
           </span>
         </div>
@@ -814,7 +814,7 @@
   <span class="md-ellipsis">
     
   
-    Movement and Navigation
+    Movement and Animation
   
 
     
@@ -832,7 +832,7 @@
   <span class="md-ellipsis">
     
   
-    Movement and Navigation
+    Movement and Animation
   
 
     
@@ -858,10 +858,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#core-movement-and-avatar-control-tool-set" class="md-nav__link">
+  <a href="#core-movement-sit-and-animation-tool-set" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Core movement and avatar control tool set
+        Core movement, sit, and animation tool set
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sit-semantics-and-chair-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sit semantics and chair workflows
       
     </span>
   </a>
@@ -906,17 +917,6 @@
     <span class="md-ellipsis">
       
         Teleport targeting strategy
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#map-lookup-and-region-handle-tooling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Map lookup and region-handle tooling
       
     </span>
   </a>
@@ -1441,10 +1441,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#core-movement-and-avatar-control-tool-set" class="md-nav__link">
+  <a href="#core-movement-sit-and-animation-tool-set" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Core movement and avatar control tool set
+        Core movement, sit, and animation tool set
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sit-semantics-and-chair-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sit semantics and chair workflows
       
     </span>
   </a>
@@ -1496,17 +1507,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#map-lookup-and-region-handle-tooling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Map lookup and region-handle tooling
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#operational-checks" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1548,9 +1548,9 @@
   
 
 
-<h1 id="advanced-movement-and-navigation">Advanced Movement and Navigation<a class="headerlink" href="#advanced-movement-and-navigation" title="Permanent link">&para;</a></h1>
-<p><code>opensim-metaverse2mcp</code> exposes movement tools over MCP HTTP. AI prompts in IM eventually map to these tools.</p>
-<h2 id="core-movement-and-avatar-control-tool-set">Core movement and avatar control tool set<a class="headerlink" href="#core-movement-and-avatar-control-tool-set" title="Permanent link">&para;</a></h2>
+<h1 id="advanced-movement-and-animation">Advanced Movement and Animation<a class="headerlink" href="#advanced-movement-and-animation" title="Permanent link">&para;</a></h1>
+<p><code>opensim-metaverse2mcp</code> exposes movement and animation tools over MCP HTTP. AI prompts in IM map to these tools.</p>
+<h2 id="core-movement-sit-and-animation-tool-set">Core movement, sit, and animation tool set<a class="headerlink" href="#core-movement-sit-and-animation-tool-set" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>MoveBy</code></li>
 <li><code>WalkTo</code></li>
@@ -1568,6 +1568,9 @@
 <li><code>MonitorAgent</code></li>
 <li><code>StopFollow</code></li>
 <li><code>Sit</code></li>
+<li><code>SitOnPrim</code></li>
+<li><code>SitOnPrimByName</code></li>
+<li><code>SitOnNearestSittablePrim</code></li>
 <li><code>Stand</code></li>
 <li><code>Fly</code></li>
 <li><code>Jump</code></li>
@@ -1575,6 +1578,25 @@
 <li><code>AnimationStop</code></li>
 <li><code>AnimationsList</code></li>
 <li><code>ActiveAnimations</code></li>
+</ul>
+<h2 id="sit-semantics-and-chair-workflows">Sit semantics and chair workflows<a class="headerlink" href="#sit-semantics-and-chair-workflows" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>Sit</code> performs a ground sit only.</li>
+<li><code>SitOnPrim(localId=...)</code> performs object sit handshake (<code>RequestSit</code> -&gt; wait <code>AvatarSitResponse</code> -&gt; <code>Sit</code>).</li>
+<li><code>SitOnPrimByName(name=...)</code> resolves nearest name match in current simulator cache, then uses object sit handshake.</li>
+<li><code>SitOnNearestSittablePrim(...)</code> searches around the bot, prefers explicit sit targets, and sits on the nearest candidate.</li>
+</ul>
+<p>Examples:</p>
+<div class="highlight"><pre><span></span><code>SitOnPrim(localId=503191167)
+SitOnPrimByName(name=&quot;deck chair&quot;, exactMatch=false, caseSensitive=false)
+SitOnNearestSittablePrim(radiusMeters=12, requireExplicitSitTarget=false)
+SitOnNearestSittablePrim(radiusMeters=20, requireExplicitSitTarget=true)
+</code></pre></div>
+<p>Operational notes:</p>
+<ul>
+<li>Object sit can fail if the bot is too far away from the target.</li>
+<li>If no <code>AvatarSitResponse</code> arrives, move closer and retry.</li>
+<li>Some furniture is sit-enabled by script/poseball rather than <code>ClickAction=Sit</code>; name-based or nearest search is often more reliable than strict explicit sit filtering.</li>
 </ul>
 <h2 id="animation-control">Animation control<a class="headerlink" href="#animation-control" title="Permanent link">&para;</a></h2>
 <p>Use <code>AnimationsList</code> to discover built-in animation names (e.g. <code>DANCE1</code>, <code>WAVE</code>, <code>CLAP</code>, <code>SIT</code>), then start/stop them by name or raw UUID:</p>
@@ -1593,36 +1615,11 @@ AnimationStop(animation=&quot;DANCE1&quot;)
 The tool runs as a background <code>BotTaskHandle</code> and emits change events on runtime channel <code>agentMonitor</code> once per second at most.</p>
 <p>Current behavior is intentionally current-region scoped: if the target is not in the bot's current simulator, <code>region</code>, <code>position</code>, <code>velocity</code>, and <code>isFlying</code> are reported as unknown (<code>null</code>).
 External fallback probing is disabled by default; enable <code>AGENT_MONITOR_EXTERNAL_FALLBACK=true</code> only if you want occasional off-region online checks.</p>
-<p>Tracked attributes can transition between known and unknown and still emit updates:</p>
-<ul>
-<li>online presence</li>
-<li>region (if known)</li>
-<li>local position x/y/z (if known)</li>
-<li>fly state (if known)</li>
-<li>velocity vector (if known)</li>
-<li>heading in degrees (when consecutive known positions allow it)</li>
-</ul>
 <h2 id="teleport-targeting-strategy">Teleport targeting strategy<a class="headerlink" href="#teleport-targeting-strategy" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Use explicit region names plus coordinates when possible.</li>
 <li>If region name collisions exist, use a region-handle or precise routing command.</li>
 <li>Confirm location with status before issuing object-edit operations.</li>
-</ul>
-<h2 id="map-lookup-and-region-handle-tooling">Map lookup and region-handle tooling<a class="headerlink" href="#map-lookup-and-region-handle-tooling" title="Permanent link">&para;</a></h2>
-<p>Use <code>RegionUuid</code> when you only have global map coordinates and need the region handle for follow-up operations.</p>
-<div class="highlight"><pre><span></span><code>RegionUuid(globalX=99712, globalY=102400)
-</code></pre></div>
-<p>Use <code>Map</code> to query map-layer entities directly from a region:</p>
-<div class="highlight"><pre><span></span><code>Map(regionHandle=&quot;0&quot;, itemType=&quot;AgentLocations&quot;, layerType=&quot;Objects&quot;)
-Map(regionHandle=&quot;1099511628032&quot;, itemType=&quot;LandForSale&quot;, layerType=&quot;Objects&quot;)
-Map(regionHandle=&quot;1099511628032&quot;, itemType=&quot;PgEvent&quot;, layerType=&quot;Objects&quot;)
-</code></pre></div>
-<p>Behavior notes:</p>
-<ul>
-<li><code>regionHandle="0"</code> means "use current simulator region handle".</li>
-<li><code>itemType</code> defaults to <code>AgentLocations</code>.</li>
-<li><code>layerType</code> defaults to <code>Objects</code>.</li>
-<li>JSON rows are type-aware and include subtype-specific fields (for example <code>avatarCount</code>, <code>price</code>, <code>description</code>, <code>flags</code>, <code>category</code>) in addition to shared map coordinates.</li>
 </ul>
 <h2 id="operational-checks">Operational checks<a class="headerlink" href="#operational-checks" title="Permanent link">&para;</a></h2>
 <p>Health endpoint for bot runtime:</p>
