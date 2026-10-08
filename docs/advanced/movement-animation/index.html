@@ -891,6 +891,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#object-animation-permission-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Object animation permission prompts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#reliable-navigation-pattern" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1474,6 +1485,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#object-animation-permission-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Object animation permission prompts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#reliable-navigation-pattern" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1578,6 +1600,8 @@
 <li><code>AnimationStop</code></li>
 <li><code>AnimationsList</code></li>
 <li><code>ActiveAnimations</code></li>
+<li><code>ListScriptAnimationPermissionRequests</code></li>
+<li><code>ScriptAnimationPermissionRespond</code></li>
 </ul>
 <h2 id="sit-semantics-and-chair-workflows">Sit semantics and chair workflows<a class="headerlink" href="#sit-semantics-and-chair-workflows" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1604,6 +1628,24 @@ SitOnNearestSittablePrim(radiusMeters=20, requireExplicitSitTarget=true)
 AnimationStart(animation=&quot;DANCE1&quot;)
 ActiveAnimations()
 AnimationStop(animation=&quot;DANCE1&quot;)
+</code></pre></div>
+<h2 id="object-animation-permission-prompts">Object animation permission prompts<a class="headerlink" href="#object-animation-permission-prompts" title="Permanent link">&para;</a></h2>
+<p>When scripted objects request permission to animate the bot (for example after a sit interaction), runtime emits:</p>
+<ul>
+<li>channel: <code>general</code></li>
+<li>event type: <code>script.permission.animation.requested</code></li>
+<li>key attribute: <code>pendingPermissionHandle</code></li>
+</ul>
+<p>Use this response pattern:</p>
+<ol>
+<li>Poll for <code>script.permission.animation.requested</code>.</li>
+<li>Inspect pending requests with <code>ListScriptAnimationPermissionRequests</code>.</li>
+<li>Approve or deny with <code>ScriptAnimationPermissionRespond</code>.</li>
+</ol>
+<p>Example calls:</p>
+<div class="highlight"><pre><span></span><code>ListScriptAnimationPermissionRequests(pendingPermissionHandle=&quot;all&quot;)
+ScriptAnimationPermissionRespond(pendingPermissionHandle=&quot;&lt;handle&gt;&quot;, allow=true)
+ScriptAnimationPermissionRespond(pendingPermissionHandle=&quot;&lt;handle&gt;&quot;, allow=false)
 </code></pre></div>
 <h2 id="reliable-navigation-pattern">Reliable navigation pattern<a class="headerlink" href="#reliable-navigation-pattern" title="Permanent link">&para;</a></h2>
 <p>For long distances, prefer waypoint-style prompts:</p>

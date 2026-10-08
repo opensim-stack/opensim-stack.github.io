@@ -1498,6 +1498,14 @@
 <li>Restrict host firewall exposure to only required ports.</li>
 <li>Keep private services on Docker internal network when possible.</li>
 </ul>
+<p>For <code>opensim-metaverse2mcp</code> (LibreMetaverse 3.1.8+), set security options explicitly:</p>
+<ul>
+<li><code>OPENSIM_SECURITY_VERIFY_SERVER_CERTIFICATES=true</code> (recommended baseline).</li>
+<li><code>OPENSIM_SECURITY_CA_BUNDLE_PATH=/path/to/ca-bundle.pem</code> when your grid uses a private/internal CA.</li>
+<li><code>OPENSIM_SECURITY_TRUST_CERTIFICATE=&lt;sha256-fingerprint&gt;</code> only when intentionally pinning a known server certificate.</li>
+<li><code>OPENSIM_RESTRICT_TEXTURES_TO_MODEL_DIRECTORY=true</code> to keep Collada texture lookup constrained to model-local paths.</li>
+</ul>
+<p>If you previously relied on implicit trust for self-signed certs, upgrades can break login until you provide a CA bundle or explicitly relax verification.</p>
 <h2 id="password-change-operations-after-deployment">Password change operations after deployment<a class="headerlink" href="#password-change-operations-after-deployment" title="Permanent link">&para;</a></h2>
 <p>Reset an account password through console command path:</p>
 <div class="highlight"><pre><span></span><code>reset user password First Last NewStrongPassword

@@ -505,6 +505,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#animation-permission-prompts-object-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Animation permission prompts (object requests)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sitting-on-chairs-and-objects" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1474,6 +1485,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#animation-permission-prompts-object-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Animation permission prompts (object requests)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sitting-on-chairs-and-objects" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1572,6 +1594,21 @@
 <p class="admonition-title">Use built-in animation names</p>
 <p>Names like <code>wave</code>, <code>dance</code>, <code>clap</code>, <code>bow</code>, <code>laugh</code>, and <code>sit</code> resolve to the viewer's built-in animations. You can also pass an animation UUID directly.</p>
 </div>
+<h2 id="animation-permission-prompts-object-requests">Animation permission prompts (object requests)<a class="headerlink" href="#animation-permission-prompts-object-requests" title="Permanent link">&para;</a></h2>
+<p>Some scripted chairs/objects ask permission before they can animate the bot avatar.
+When this happens, the runtime emits <code>script.permission.animation.requested</code> on channel <code>general</code>.</p>
+<p>Try prompts like:</p>
+<div class="highlight"><pre><span></span><code>Show pending animation permission requests.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Approve the latest animation permission request.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Reject animation permission request handle &lt;handle&gt;.
+</code></pre></div>
+<p>Behind the scenes these map to:</p>
+<ul>
+<li><code>ListScriptAnimationPermissionRequests</code></li>
+<li><code>ScriptAnimationPermissionRespond</code></li>
+</ul>
 <h2 id="sitting-on-chairs-and-objects">Sitting on chairs and objects<a class="headerlink" href="#sitting-on-chairs-and-objects" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>Sit on prim 503191167.
 </code></pre></div>
