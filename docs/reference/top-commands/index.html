@@ -1349,6 +1349,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#landmark-workflows-mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Landmark workflows (MCP)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#docker-operational-commands" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1496,6 +1507,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#landmark-workflows-mcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Landmark workflows (MCP)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#docker-operational-commands" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1583,6 +1605,13 @@ set water height 25
 Inspect /workspace/models/house.glb with strict mode disabled and summarize top warnings.
 Upload /workspace/models/sign.glb as Town Sign with description Main plaza sign.
 Inspect /workspace/models/bridge.glb in strict mode, then upload as Bridge-A if inspection passes.
+</code></pre></div>
+<h2 id="landmark-workflows-mcp">Landmark workflows (MCP)<a class="headerlink" href="#landmark-workflows-mcp" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>LandmarkList(maxResults=200)
+LandmarkCreate(name=&quot;Sandbox Spawn&quot;, useCurrentPosition=true)
+LandmarkCreate(name=&quot;Parcel Door&quot;, useCurrentPosition=false, x=128, y=90, z=24)
+TeleportToLandmark(landmarkIdOrName=&quot;Sandbox Spawn&quot;)
+TeleportToLandmark(landmarkIdOrName=&quot;&lt;landmark-item-or-asset-uuid&gt;&quot;)
 </code></pre></div>
 <h2 id="docker-operational-commands">Docker operational commands<a class="headerlink" href="#docker-operational-commands" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>ps

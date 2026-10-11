@@ -897,6 +897,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#object-monitor-gating" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Object monitor gating
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#backpressure-and-trimming" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1630,6 +1641,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#object-monitor-gating" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Object monitor gating
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#backpressure-and-trimming" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1809,12 +1831,15 @@
 <li><code>EventStreamHistory(lastSeconds, channels, eventTypes, radiusMeters, objectIds, objectLocalIds, chatSources, maxResults)</code></li>
 <li><code>EventStreamUnsubscribe(subscriptionId)</code></li>
 <li><code>EventStreamStats()</code></li>
+<li><code>ObjectMonitorSimOrPrim(regionHandle, primId, children, terseUpdateEvent, fullUpdateEvent)</code></li>
+<li><code>ListObjectMonitors()</code></li>
+<li><code>CloseObjectMonitor(monitorHandle)</code></li>
 </ul>
 <h2 id="runtime-model">Runtime model<a class="headerlink" href="#runtime-model" title="Permanent link">&para;</a></h2>
 <h3 id="channels">Channels<a class="headerlink" href="#channels" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>general</code>: login/disconnect/chat/inventory-offer/script-dialog and similar lifecycle events</li>
-<li><code>object</code>: object update stream (high-volume)</li>
+<li><code>object</code>: object update stream (high-volume, monitor-gated)</li>
 <li><code>teleport</code>: teleport success/failure stream</li>
 </ul>
 <p><code>all</code> is accepted when creating or overriding channels.</p>
@@ -1830,6 +1855,21 @@
 <ul>
 <li><code>maxResults</code>: <code>50</code> to <code>200</code></li>
 <li><code>waitMs</code>: <code>3000</code> to <code>10000</code></li>
+</ul>
+<h3 id="object-monitor-gating">Object monitor gating<a class="headerlink" href="#object-monitor-gating" title="Permanent link">&para;</a></h3>
+<p>Object channel updates are disabled by default. Subscribing to <code>object</code> alone does not emit object updates until at least one monitor is active.</p>
+<p>Use monitor tools to control object event emission:</p>
+<ul>
+<li><code>ObjectMonitorSimOrPrim</code>: add one monitor spec and get a monitor handle</li>
+<li><code>ListObjectMonitors</code>: inspect active monitor specs</li>
+<li><code>CloseObjectMonitor</code>: remove one monitor by handle, or remove all with empty/null handle</li>
+</ul>
+<p>Monitor matching fields:</p>
+<ul>
+<li><code>regionHandle</code>: <code>0</code> means all regions</li>
+<li><code>primId</code>: <code>0</code> means all prims</li>
+<li><code>children</code>: when true, child prim updates of <code>primId</code> also match</li>
+<li><code>terseUpdateEvent</code>/<code>fullUpdateEvent</code>: choose terse/full object update types</li>
 </ul>
 <h3 id="backpressure-and-trimming">Backpressure and trimming<a class="headerlink" href="#backpressure-and-trimming" title="Permanent link">&para;</a></h3>
 <p>Buffers are bounded per channel. When full, the oldest events are trimmed.</p>
@@ -1893,6 +1933,7 @@ The event attributes include a <code>pendingDialogHandle</code> plus object/owne
 <ul>
 <li>Subscription A: <code>object</code></li>
 <li>Subscription B: <code>teleport</code></li>
+<li>Add monitor specs first (for example one per target region/object) before polling object events.</li>
 <li>Keep object and teleport split to avoid starvation.</li>
 </ul>
 <h3 id="3-conversation-supervisor">3) Conversation supervisor<a class="headerlink" href="#3-conversation-supervisor" title="Permanent link">&para;</a></h3>
@@ -1905,9 +1946,14 @@ The event attributes include a <code>pendingDialogHandle</code> plus object/owne
 <div class="highlight"><pre><span></span><code>1) EventStreamSubscribe(channels=&quot;general&quot;, eventTypes=&quot;network.disconnected,teleport.failed&quot;, chatSources=&quot;Governor Bot&quot;)
 2) EventStreamPoll(subscriptionId=&quot;&lt;id&gt;&quot;, maxResults=100, waitMs=5000)
 3) EventStreamPoll(subscriptionId=&quot;&lt;id&gt;&quot;, cursor=&quot;&lt;nextCursor&gt;&quot;, maxResults=100, waitMs=5000)
-4) EventStreamHistory(lastSeconds=120, channels=&quot;teleport&quot;, eventTypes=&quot;teleport.failed&quot;, maxResults=50)
-5) EventStreamStats()
-6) EventStreamUnsubscribe(subscriptionId=&quot;&lt;id&gt;&quot;)
+4) ObjectMonitorSimOrPrim(regionHandle=0, primId=0, children=false, terseUpdateEvent=true, fullUpdateEvent=false)
+5) EventStreamSubscribe(channels=&quot;object&quot;, maxResults=100)
+6) EventStreamPoll(subscriptionId=&quot;&lt;objectSubId&gt;&quot;, maxResults=100, waitMs=5000)
+7) EventStreamHistory(lastSeconds=120, channels=&quot;teleport&quot;, eventTypes=&quot;teleport.failed&quot;, maxResults=50)
+8) ListObjectMonitors()
+9) CloseObjectMonitor(monitorHandle=&quot;&quot;)
+10) EventStreamStats()
+11) EventStreamUnsubscribe(subscriptionId=&quot;&lt;id&gt;&quot;)
 </code></pre></div>
 <h2 id="operational-notes">Operational notes<a class="headerlink" href="#operational-notes" title="Permanent link">&para;</a></h2>
 <ul>
