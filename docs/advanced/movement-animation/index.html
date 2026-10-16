@@ -902,6 +902,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#scripted-dialog-menus-and-text-boxes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scripted dialog menus and text boxes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#reliable-navigation-pattern" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1496,6 +1507,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#scripted-dialog-menus-and-text-boxes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scripted dialog menus and text boxes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#reliable-navigation-pattern" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1600,6 +1622,9 @@
 <li><code>AnimationStop</code></li>
 <li><code>AnimationsList</code></li>
 <li><code>ActiveAnimations</code></li>
+<li><code>ListScriptDialogs</code></li>
+<li><code>ScriptDialogChoice</code></li>
+<li><code>ScriptDialogTextInput</code></li>
 <li><code>ListScriptAnimationPermissionRequests</code></li>
 <li><code>ScriptAnimationPermissionRespond</code></li>
 </ul>
@@ -1646,6 +1671,20 @@ AnimationStop(animation=&quot;DANCE1&quot;)
 <div class="highlight"><pre><span></span><code>ListScriptAnimationPermissionRequests(pendingPermissionHandle=&quot;all&quot;)
 ScriptAnimationPermissionRespond(pendingPermissionHandle=&quot;&lt;handle&gt;&quot;, allow=true)
 ScriptAnimationPermissionRespond(pendingPermissionHandle=&quot;&lt;handle&gt;&quot;, allow=false)
+</code></pre></div>
+<h2 id="scripted-dialog-menus-and-text-boxes">Scripted dialog menus and text boxes<a class="headerlink" href="#scripted-dialog-menus-and-text-boxes" title="Permanent link">&para;</a></h2>
+<p>Scripted objects can open either button menus (e.g. <code>llDialog</code>) or text entry prompts (e.g. <code>llTextBox</code>).
+Both are exposed through the same pending dialog handle surfaced by runtime event <code>script.dialog.received</code>.</p>
+<p>Recommended response flow:</p>
+<ol>
+<li>Poll/inspect pending dialogs with <code>ListScriptDialogs</code>.</li>
+<li>Use <code>ScriptDialogChoice</code> when responding by button index.</li>
+<li>Use <code>ScriptDialogTextInput</code> when the dialog expects free-form text.</li>
+</ol>
+<p>Example calls:</p>
+<div class="highlight"><pre><span></span><code>ListScriptDialogs(pendingDialogHandle=&quot;all&quot;)
+ScriptDialogChoice(pendingDialogHandle=&quot;&lt;dialog-handle&gt;&quot;, buttonIndex=0)
+ScriptDialogTextInput(pendingDialogHandle=&quot;&lt;dialog-handle&gt;&quot;, text=&quot;status&quot;)
 </code></pre></div>
 <h2 id="reliable-navigation-pattern">Reliable navigation pattern<a class="headerlink" href="#reliable-navigation-pattern" title="Permanent link">&para;</a></h2>
 <p>For long distances, prefer waypoint-style prompts:</p>

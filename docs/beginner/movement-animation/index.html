@@ -516,6 +516,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#scripted-menus-and-text-input-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scripted menus and text input prompts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sitting-on-chairs-and-objects" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1496,6 +1507,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#scripted-menus-and-text-input-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scripted menus and text input prompts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sitting-on-chairs-and-objects" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1608,6 +1630,22 @@ When this happens, the runtime emits <code>script.permission.animation.requested
 <ul>
 <li><code>ListScriptAnimationPermissionRequests</code></li>
 <li><code>ScriptAnimationPermissionRespond</code></li>
+</ul>
+<h2 id="scripted-menus-and-text-input-prompts">Scripted menus and text input prompts<a class="headerlink" href="#scripted-menus-and-text-input-prompts" title="Permanent link">&para;</a></h2>
+<p>Some scripted objects open popup menus or text boxes.
+When this happens, check pending dialogs and respond with either button choice or text.</p>
+<p>Try prompts like:</p>
+<div class="highlight"><pre><span></span><code>Show pending scripted dialogs.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Press button 1 on dialog handle &lt;handle&gt;.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Submit text &quot;hello&quot; on dialog handle &lt;handle&gt;.
+</code></pre></div>
+<p>Behind the scenes these map to:</p>
+<ul>
+<li><code>ListScriptDialogs</code></li>
+<li><code>ScriptDialogChoice</code></li>
+<li><code>ScriptDialogTextInput</code></li>
 </ul>
 <h2 id="sitting-on-chairs-and-objects">Sitting on chairs and objects<a class="headerlink" href="#sitting-on-chairs-and-objects" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>Sit on prim 503191167.

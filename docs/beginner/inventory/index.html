@@ -628,6 +628,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#touch-another-avatars-attachment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Touch another avatar's attachment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#tips" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1474,6 +1485,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#touch-another-avatars-attachment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Touch another avatar's attachment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#tips" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1556,6 +1578,21 @@
 <li><code>InventoryLinkItem</code></li>
 <li><code>InventoryDeleteItem</code></li>
 </ul>
+<h2 id="touch-another-avatars-attachment">Touch another avatar's attachment<a class="headerlink" href="#touch-another-avatars-attachment" title="Permanent link">&para;</a></h2>
+<p>If you need to click a scripted item worn by another avatar:</p>
+<ol>
+<li>Ask for known attachments with <code>AvatarAppearanceListWorn</code>.</li>
+<li>Touch one attachment with <code>AvatarAttachmentTouch</code>.</li>
+</ol>
+<p>Prompts you can use:</p>
+<div class="highlight"><pre><span></span><code>List known worn attachments for avatar 11111111-2222-3333-4444-555555555555.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Touch attachment object aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee on avatar 11111111-2222-3333-4444-555555555555.
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Best target</p>
+<p>Use attachment <code>objectId</code> when possible. It is more precise than attachment-point matching.</p>
+</div>
 <h2 id="tips">Tips<a class="headerlink" href="#tips" title="Permanent link">&para;</a></h2>
 <ul>
 <li>If you do not see the item you expect, try listing recursively from the folder above it.</li>

@@ -1046,6 +1046,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#cross-avatar-attachment-interaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-avatar attachment interaction
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1506,6 +1517,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#cross-avatar-attachment-interaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-avatar attachment interaction
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1608,6 +1630,27 @@
 <li><code>InventoryDeleteFolder</code></li>
 <li><code>InventoryDeleteItem</code></li>
 <li><code>InventoryDeleteMany</code></li>
+</ul>
+<h2 id="cross-avatar-attachment-interaction">Cross-avatar attachment interaction<a class="headerlink" href="#cross-avatar-attachment-interaction" title="Permanent link">&para;</a></h2>
+<p>When you need to interact with scripted attachments worn by another avatar, use the cache-first flow:</p>
+<ul>
+<li><code>AvatarAppearanceListWorn</code> - lists known attachment object UUIDs (and local IDs when available) for a target avatar UUID.</li>
+<li><code>AvatarAttachmentTouch</code> - resolves a target attachment and sends a touch in one call.</li>
+</ul>
+<p>Recommended sequence:</p>
+<ol>
+<li>Call <code>AvatarAppearanceListWorn(avatarId=...)</code>.</li>
+<li>Pick an <code>objectId</code> from the returned attachment list.</li>
+<li>Call <code>AvatarAttachmentTouch(avatarId=..., objectId=..., settleMs=...)</code>.</li>
+</ol>
+<p>Example pattern:</p>
+<div class="highlight"><pre><span></span><code>List known attachments for avatar 11111111-2222-3333-4444-555555555555.
+Touch attachment object aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee on that avatar.
+</code></pre></div>
+<p>Operational notes:</p>
+<ul>
+<li>This depends on simulator cache visibility; if the avatar or attachment is unknown in cache, refresh context (move closer / same region) and retry.</li>
+<li>Prefer <code>objectId</code> targeting when multiple attachments share the same attachment point.</li>
 </ul>
 
 
