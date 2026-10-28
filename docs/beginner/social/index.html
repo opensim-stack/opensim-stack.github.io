@@ -1497,6 +1497,7 @@
 <li>List friends and see who is online.</li>
 <li>Send friendship offers and respond to incoming friendship requests.</li>
 <li>View and change friend permission switches (online visibility, map locate, and object modify/take).</li>
+<li>Set or clear local avatar partnerships (partner/divorce) for users that exist on this local grid.</li>
 <li>Send teleport offers or request a teleport invite.</li>
 <li>Respond to incoming teleport offers.</li>
 <li>Search people, groups, places, and land-for-sale listings.</li>
@@ -1513,6 +1514,9 @@
 </ul>
 <p>Friendship permissions note:
 - When the bot accepts a friendship request from a configured handler, it automatically enables all three rights for that handler friend.</p>
+<p>Partnership note:
+- Setting a partner updates both users in one call when both local users exist.
+- Clearing a partner only updates the target user, so a full divorce needs two calls (one per user).</p>
 <h2 id="starter-prompts">Starter prompts<a class="headerlink" href="#starter-prompts" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>Show my current groups.
 </code></pre></div>
@@ -1525,6 +1529,10 @@
 <div class="highlight"><pre><span></span><code>Set friend rights for avatar 99999999-8888-7777-6666-555555555555 so they can see me online, locate me on map, and modify my objects.
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Send a friendship request to avatar 99999999-8888-7777-6666-555555555555.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Set partner for local user Alice Example to Bob Example.
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Clear partner for local user Alice Example.
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Send a teleport offer to 99999999-8888-7777-6666-555555555555 with message Meet me at the welcome area.
 </code></pre></div>
